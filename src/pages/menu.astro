@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import breadImage from '../images/hero-cafe.jpg';
+import pastryImage from '../images/hero-croissant.jpg';
+import breakfastImage from '../images/hero-main.jpg';
+
+const categories = [
+  { id: 'panaderia', label: 'Panadería', icon: 'bread' },
+  { id: 'desayunos', label: 'Desayunos', icon: 'sunrise' },
+  { id: 'almuerzos', label: 'Almuerzos', icon: 'lunch' },
+  { id: 'cafe', label: 'Café y bebidas', icon: 'coffee' },
+  { id: 'postres', label: 'Postres', icon: 'dessert' },
+];
+
+const products = [
+  {
+    id: 'panaderia',
+    title: 'Panadería',
+    description: 'Descripción :D',
+    items: [
+      { name: 'Pan de masa madre', description: 'Descripción', price: '$18.000', image: breadImage, alt: 'Variedad de panes artesanales' },
+      { name: 'Croissant de mantequilla', description: 'Descripción', price: '$7.500', image: pastryImage, alt: 'Panadería recién horneada' },
+      { name: 'Roll de canela', description: 'Descripción', price: '$8.000', image: pastryImage, alt: 'Rollos de canela artesanales' },
+      { name: 'Pan de banano', description: 'Descripción', price: '$9.500', image: breakfastImage, alt: 'Pan de banano recién preparado' },
+    ],
+  },
+  {
+    id: 'desayunos',
+    title: 'Desayunos',
+    description: 'Para empezar el día sin afán, con el sabor de lo recién hecho.',
+    items: [
+      { name: 'Tostadas de la casa', description: 'Pan artesanal, aguacate y huevo al gusto.', price: '$21.000', image: breakfastImage, alt: 'Pan artesanal para el desayuno' },
+      { name: 'Croissant con huevos', description: 'Croissant de mantequilla con huevos revueltos.', price: '$18.500', image: pastryImage, alt: 'Croissant de mantequilla artesanal' },
+      { name: 'Desayuno de temporada', description: 'Una combinación fresca para comenzar la mañana.', price: '$24.000', image: breadImage, alt: 'Panadería artesanal para compartir' },
+    ],
+  },
+  {
+    id: 'almuerzos',
+    title: 'Almuerzos',
+    description: 'Platos preparados con ingredientes frescos y de temporada.',
+    items: [
+      { name: 'Sándwich artesanal', description: 'Pan de la casa con vegetales y relleno del día.', price: '$29.000', image: breadImage, alt: 'Pan artesanal recién horneado' },
+      { name: 'Ensalada de la huerta', description: 'Vegetales frescos con aderezo hecho en casa.', price: '$26.000', image: breakfastImage, alt: 'Preparaciones frescas de la casa' },
+      { name: 'Tostada de temporada', description: 'Pan artesanal con ingredientes seleccionados.', price: '$32.000', image: pastryImage, alt: 'Panadería artesanal de Bukë' },
+    ],
+  },
+  {
+    id: 'cafe',
+    title: 'Café y bebidas',
+    description: 'Una pausa rica, para acompañar con algo recién salido del horno.',
+    items: [
+      { name: 'Café filtrado', description: 'Café de origen preparado al momento.', price: '$7.000', image: breadImage, alt: 'Acompañamiento artesanal para el café' },
+      { name: 'Latte', description: 'Espresso y leche cremosa, servido caliente.', price: '$9.000', image: breakfastImage, alt: 'Panadería para acompañar un latte' },
+      { name: 'Chocolate de la casa', description: 'Chocolate caliente, cremoso y reconfortante.', price: '$10.000', image: pastryImage, alt: 'Algo dulce para acompañar una bebida' },
+    ],
+  },
+  {
+    id: 'postres',
+    title: 'Postres',
+    description: 'Un antojo dulce hecho para disfrutar hasta la última miguita.',
+    items: [
+      { name: 'Torta del día', description: 'Pregunta por el sabor recién preparado.', price: '$12.000', image: breakfastImage, alt: 'Panadería dulce recién preparada' },
+      { name: 'Galleta artesanal', description: 'Crujiente por fuera, suave por dentro.', price: '$5.500', image: breadImage, alt: 'Selección de productos horneados' },
+      { name: 'Roll de canela', description: 'Horneado en casa y perfecto para compartir.', price: '$8.000', image: pastryImage, alt: 'Rollos de canela recién horneados' },
+    ],
+  },
+];
+
+const categoryIcons: Record<string, string> = {
+  bread: '<path d="M3 10c0-3.3 4-6 9-6s9 2.7 9 6v8H3v-8Zm0 3h18m-13-3v2m4-3v2m4-2v2"/>',
+  sunrise: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4 18h16"/>',
+  lunch: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20m14-7V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
+  coffee: '<path d="M10 2v2m4-2v2M4 8h15v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Zm15 2h1a2 2 0 1 1 0 4h-1M2 22h20"/>',
+  dessert: '<path d="M4 10h16l-2 10H6L4 10Zm-1 0a9 9 0 0 1 18 0M12 2v2m-5 0 1 2m9-2-1 2"/>',
+};
+---
+
+<Layout
+  title="Menú | Bukë, artesanos del pan"
+  description="Explora el menú de Bukë: panadería artesanal, desayunos, almuerzos, café y postres."
+>
+  <header class="border-b border-ink/15 bg-paper">
+    <div class="mx-auto flex min-h-20 max-w-6xl items-center justify-between gap-4 px-5 sm:px-6">
+      <a href="/" aria-label="Volver al inicio de Bukë" class="font-display text-2xl font-bold tracking-tight">
+        Bukë
+      </a>
+      <p class="hidden text-sm text-ink/70 sm:block">Artesanos del pan</p>
+      <a href="/#ubicacion" class="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-ink/90">
+        Visítanos
+      </a>
+    </div>
+  </header>
+
+  <nav aria-label="Categorías del menú" class="sticky top-0 z-30 border-b border-ink/25 bg-paper/95 shadow-sm backdrop-blur">
+    <ul class="category-scroll mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 sm:justify-center sm:gap-5 sm:px-6">
+      {categories.map((category) => (
+        <li class="shrink-0">
+          <a
+            href={`#${category.id}`}
+            class="inline-flex min-h-11 items-center gap-2 rounded-full border border-ink/25 px-4 text-sm font-medium transition-colors hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          >
+            <span class="flex size-7 items-center justify-center rounded-full border border-current">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={categoryIcons[category.icon]} />
+            </span>
+            {category.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <main id="top" class="mx-auto max-w-6xl px-5 pb-20 pt-10 sm:px-6 sm:pt-14">
+    <div class="mb-12 text-center sm:mb-16">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-clay">Hecho con tiempo y cariño</p>
+      <h1 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">Nuestro menú</h1>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg">
+        Pan recién horneado, buenos momentos y algo rico para cada antojo.
+      </p>
+      <p class="mx-auto mt-3 max-w-xl text-xs text-ink/60">
+        Productos y precios de ejemplo: actualiza la carta con la oferta vigente de Bukë.
+      </p>
+    </div>
+
+    <div class="space-y-16 sm:space-y-20">
+      {products.map((category) => (
+        <section id={category.id} aria-labelledby={`${category.id}-title`} class="scroll-mt-28">
+          <div class="mb-6 flex flex-wrap items-end justify-between gap-3 border-b border-ink/20 pb-4 sm:mb-8">
+            <div>
+              <h2 id={`${category.id}-title`} class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                {category.title}
+              </h2>
+              <p class="mt-2 text-sm text-ink/70 sm:text-base">{category.description}</p>
+            </div>
+            <a href="#top" class="text-sm font-medium underline decoration-ink/40 underline-offset-4 hover:decoration-ink">
+              Volver arriba
+            </a>
+          </div>
+
+          <ul class="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
+            {category.items.map((product) => (
+              <li class="overflow-hidden rounded-2xl border border-ink/25 bg-paper shadow-sm transition duration-200 hover:-translate-y-1 hover:border-ink/50 hover:shadow-md">
+                <div class="aspect-[4/3] overflow-hidden bg-wheat">
+                  <Image src={product.image} alt={product.alt} class="h-full w-full object-cover transition duration-300 hover:scale-105" />
+                </div>
+                <div class="flex min-h-36 flex-col p-3 sm:min-h-40 sm:p-5">
+                  <h3 class="font-display text-base leading-snug font-semibold sm:text-xl">{product.name}</h3>
+                  <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-ink/75 sm:text-sm">{product.description}</p>
+                  <p class="mt-auto pt-3 text-sm font-bold sm:text-base">{product.price}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .category-scroll {
+    scrollbar-width: none;
+  }
+
+  .category-scroll::-webkit-scrollbar {
+    display: none;
+  }
+</style>
