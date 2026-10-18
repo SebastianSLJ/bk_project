@@ -14,6 +14,7 @@ const brand = 'Bukë';
 const announcement = 'Una buena mañana empieza con algo recién horneado';
 
 const menu = [
+  { id: 'panaderia', label: 'Panadería', icon: 'bread' },
   { id: 'desayunos', label: 'Desayuno', icon: 'sunrise' },
   { id: 'almuerzos', label: 'Almuerzo', icon: 'lunch' },
   { id: 'cafe', label: 'Tarde', icon: 'coffee' },
@@ -57,7 +58,7 @@ const sede = {
     { days: 'Viernes y Sábado', time: '7:00 a.m. a 8:00 p.m.' }, 
     { days: 'Domingos y Festivos', time: '7:00 a.m. a 7:00 p.m.' }       
   ],
-  coords: '4.880076979736878, -74.03754124809025',         // Coordenadas google Maps
+  coords: '4.880111, -74.037445',         // Coordenadas google Maps
   whatsapp: '57XXXXXXXXXX',  // TODO: número con indicativo, sin + ni espacios
 };
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${sede.coords}`;
@@ -274,7 +275,7 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
       </div>
     </section>
 
-    <PetFriendly whatsapp={sede.whatsapp} />
+    <PetFriendly />
 
     <!-- Divisor -->
     <div class="mx-auto flex max-w-6xl items-center gap-4 px-6" role="separator" aria-hidden="true">

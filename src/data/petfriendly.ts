@@ -25,6 +25,4 @@ export const petFriendlyContent = {
     { label: 'Agua para tu mascota', icon: 'drop' },
     { label: 'Reserva con anticipación', icon: 'calendar' },
   ],
-  cta: 'Reservar con mi mascota',
-  whatsappMessage: 'Hola, quiero reservar una mesa en Bukë Chía y voy a ir con mi mascota. ¿Me ayudan con las condiciones?',
 };
