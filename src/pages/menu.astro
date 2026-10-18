@@ -4,8 +4,9 @@ import { Image } from 'astro:assets';
 import breadImage from '../images/hero-cafe.jpg';
 import pastryImage from '../images/hero-croissant.jpg';
 import breakfastImage from '../images/hero-main.jpg';
-import logoImage from '../images/47C.png';
+import logoImage from '../images/45.png';
 const brand = 'Bukë';
+const announcement = 'Una buena mañana empieza con algo recién horneado';
 
 const categories = [
   { id: 'panaderia', label: 'Panadería', icon: 'bread' },
@@ -82,16 +83,40 @@ const categoryIcons: Record<string, string> = {
   title="Menú | Bukë, artesanos del pan"
   description="Explora el menú de Bukë: panadería artesanal, desayunos, almuerzos, café y postres."
 >
-  <header class="border-b border-ink/15 bg-paper">
-    <div class="mx-auto flex min-h-20 max-w-6xl items-center justify-between gap-4 px-5 sm:px-6">
-      <a href="/" aria-label="Volver al inicio de Bukë"       class="block w-20 shrink-0 sm:w-30">
-        <Image src={logoImage} alt={brand} class="block h-auto w-full object-contain" />
-            </a>
-      <p class="hidden text-sm text-ink/70 sm:block">Artesanos del pan</p>
-      <a href="/#ubicacion" class="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-ink/90">
-        Visítanos
-      </a>
+  <header class="relative z-40 border-b border-ink/10 bg-paper text-ink shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+    <div class="announcement-ribbon" role="region" aria-label={announcement}>
+      <div class="announcement-track" aria-hidden="true">
+        {Array.from({ length: 2 }).map(() => (
+          <div class="announcement-group">
+            {Array.from({ length: 4 }).map(() => (
+              <span class="announcement-item">{announcement}</span>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
+    <nav class="relative mx-auto flex min-h-16 md:min-h-24 max-w-6xl items-center justify-between px-4 py-2 md:px-6" aria-label="Principal">
+      <div class="relative flex min-w-0 items-center justify-self-start">
+        <button id="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-menu" class="flex size-11 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-ink/10">
+          <span class="flex w-5 flex-col gap-1.5" aria-hidden="true">
+            <span class="h-0.5 w-full bg-current"></span>
+            <span class="h-0.5 w-full bg-current"></span>
+            <span class="h-0.5 w-full bg-current"></span>
+          </span>
+        </button>
+        <ul
+          id="primary-menu"
+          class="absolute left-0 top-[calc(100%+0.75rem)] z-40 hidden min-w-52 flex-col gap-1 rounded-lg border border-ink/10 bg-paper p-2 text-ink shadow-lg"
+        >
+          <li><a href="/menu" class="block rounded px-4 py-3 hover:bg-ink/10">Menú</a></li>
+          <li><a href="/#panaderia" class="block rounded px-4 py-3 hover:bg-ink/10">Panadería</a></li>
+        </ul>
+      </div>
+      <a href="/" aria-label={brand} class="absolute left-1/2 top-1/2 flex h-auto w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center md:w-35">
+        <Image src={logoImage} alt={brand} class="block h-auto w-full object-contain" />
+      </a>
+      <a href="/#ubicacion" class="inline-flex min-h-11 items-center rounded-full bg-ink px-2 py-2 text-xs font-medium text-paper sm:px-5 sm:text-base">Visítanos</a>
+    </nav>
   </header>
 
   <nav aria-label="Categorías del menú" class="sticky top-0 z-30 border-b border-ink/25 bg-paper/95 shadow-sm backdrop-blur">
@@ -181,6 +206,27 @@ const categoryIcons: Record<string, string> = {
 </Layout>
 
 <script>
+  const menuToggle = document.querySelector<HTMLButtonElement>('#mobile-menu-toggle');
+  const primaryMenu = document.querySelector<HTMLUListElement>('#primary-menu');
+
+  const closeMenu = () => {
+    primaryMenu?.classList.add('hidden');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    menuToggle?.setAttribute('aria-label', 'Abrir menú');
+  };
+
+  menuToggle?.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+    menuToggle.setAttribute('aria-label', isExpanded ? 'Abrir menú' : 'Cerrar menú');
+    primaryMenu?.classList.toggle('hidden', isExpanded);
+  });
+
+  primaryMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+
   const tabs = document.querySelectorAll<HTMLAnchorElement>('[data-category-tab]');
   const panels = document.querySelectorAll<HTMLElement>('[data-category-panel]');
 

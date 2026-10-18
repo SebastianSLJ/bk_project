@@ -13,7 +13,7 @@
 html { scroll-behavior: smooth; }
 .announcement-ribbon {
   overflow: hidden;
-  padding-block: 0.65rem;
+  padding-block: 0.15rem;
   background: var(--color-crust);
   color: var(--color-paper);
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
@@ -29,7 +29,7 @@ html { scroll-behavior: smooth; }
 }
 .announcement-item {
   flex: none;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   white-space: nowrap;
@@ -43,6 +43,10 @@ html { scroll-behavior: smooth; }
   content: "";
   transform: rotate(45deg);
   vertical-align: middle;
+}
+@media (min-width: 640px) {
+  .announcement-ribbon { padding-block: 0.65rem; }
+  .announcement-item { font-size: 0.75rem; }
 }
 @keyframes announcement-scroll {
   to { transform: translateX(-50%); }

@@ -1,0 +1,221 @@
+---
+import { petFriendlyContent as content, petFriendlyImages as images } from '../data/petfriendly';
+
+interface Props {
+  whatsapp?: string;
+  autoplayMs?: number;
+}
+
+const { whatsapp = '', autoplayMs = 5000 } = Astro.props;
+const href = `https://wa.me/${whatsapp}?text=${encodeURIComponent(content.whatsappMessage)}`;
+
+const icons: Record<string, string> = {
+  paw: '<circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>',
+  terrace: '<path d="M3 11h18L12 3 3 11Zm9 0v10m-5 0h10M5 11l-2 10m16-10 2 10"/>',
+  drop: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/>',
+};
+
+const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
+---
+
+<div class="mx-auto flex max-w-6xl items-center gap-4 px-6" role="separator" aria-hidden="true">
+  <span class="h-px flex-1 bg-ink/20"></span>
+  <svg class="size-6 shrink-0 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons.paw} />
+  <span class="h-px flex-1 bg-ink/20"></span>
+</div>
+
+<section id="mascotas" class="overflow-x-clip bg-paper py-14 md:py-12">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-[1fr_1fr] md:gap-12">
+    <div>
+      <h2 class="font-display max-w-xl text-4xl leading-tight font-semibold tracking-tight md:text-5xl">
+        {content.title}
+      </h2>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink/80">{content.paragraph}</p>
+
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-7 inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-ink px-7 font-medium text-paper transition-colors hover:bg-ink/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      >
+        <svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons.paw} />
+        {content.cta}
+        <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </a>
+
+      <ul class="mt-8 grid grid-cols-2 gap-x-4 gap-y-5 border-t border-ink/20 pt-6 sm:grid-cols-4 md:gap-3">
+        {content.features.map((feature) => (
+          <li class="flex flex-col items-center gap-2 text-center text-xs font-medium leading-snug sm:text-sm">
+            <svg class="size-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[feature.icon]} />
+            <span>{feature.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div
+      class="card-stack mx-auto w-full max-w-md md:order-first"
+      data-card-stack
+      data-index="0"
+      data-interval={autoplayMs}
+      style={`--n:${images.length}`}
+      role="group"
+      aria-roledescription="carrusel"
+      aria-label="Galería de mascotas en Bukë"
+      tabindex="0"
+    >
+      <div class="stack-frame" data-stack>
+        {images.map((image, i) => (
+          <div
+            class="stack-card"
+            data-card
+            data-active={i === 0 ? '' : undefined}
+            aria-hidden={i === 0 ? 'false' : 'true'}
+            style={`--d:${i};--k:${sign(i)}`}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              draggable="false"
+              class="size-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-6 flex justify-center gap-4">
+        <button type="button" data-stack-prev aria-label="Imagen anterior" class="stack-btn">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+        </button>
+        <button type="button" data-stack-next aria-label="Imagen siguiente" class="stack-btn">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+        </button>
+      </div>
+
+      <p class="sr-only" aria-live="polite" data-stack-status></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initCardStack } from '../scripts/card-stack';
+  document.querySelectorAll<HTMLElement>('[data-card-stack]').forEach(initCardStack);
+</script>
+
+<style>
+  .card-stack {
+    /* Variables de ajuste */
+    --stack-duration: 700ms;
+    --stack-easing: cubic-bezier(0.65, 0, 0.35, 1);
+    --stack-out-angle: -4.5deg;
+    --stack-out-x: -75%;
+    --stack-shift: 4%;
+    --stack-lift: -1.5%;
+    --stack-angle: 1.5deg;
+    --stack-shrink: 0.04;
+    --stack-accent: var(--color-clay);
+    border-radius: 0.5rem;
+  }
+  .card-stack:focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 6px;
+  }
+
+  /* Deja espacio a la derecha para la pila que asoma por detrás; el contenedor tiene proporción fija (sin CLS). */
+  .stack-frame {
+    position: relative;
+    width: 88%;
+    aspect-ratio: 4 / 5;
+    touch-action: pan-y;
+  }
+
+  .stack-card {
+    --pose: translate(calc(var(--d) * var(--stack-shift)), calc(var(--d) * var(--stack-lift)))
+      rotate(calc(var(--k) * var(--stack-angle))) scale(calc(1 - var(--d) * var(--stack-shrink)));
+    --pose-from: translate(calc(var(--d0) * var(--stack-shift)), calc(var(--d0) * var(--stack-lift)))
+      rotate(calc(var(--k0) * var(--stack-angle))) scale(calc(1 - var(--d0) * var(--stack-shrink)));
+    --pose-out: translateX(var(--stack-out-x)) rotate(var(--stack-out-angle));
+    --z-top: calc(var(--n) + 1);
+
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border: 1px solid var(--stack-accent);
+    border-radius: 8px;
+    background: var(--color-wheat);
+    opacity: 1;
+    z-index: calc(var(--n) - var(--d));
+    transform: var(--pose);
+    transform-origin: center;
+    transition: transform var(--stack-duration) var(--stack-easing);
+    user-select: none;
+  }
+
+  .is-animating .stack-card {
+    will-change: transform;
+  }
+
+  .stack-card.is-leaving,
+  .stack-card.is-entering {
+    transition: none;
+    animation-duration: var(--stack-duration);
+    animation-timing-function: var(--stack-easing);
+    animation-fill-mode: both;
+  }
+  .stack-card.is-leaving { animation-name: stack-leave; }
+  .stack-card.is-entering { animation-name: stack-enter; }
+
+  /* Sale por la izquierda y se reubica al fondo. */
+  @keyframes stack-leave {
+    0% { transform: var(--pose-from); z-index: var(--z-top); }
+    50% { transform: var(--pose-out); z-index: var(--z-top); }
+    51% { z-index: 0; }
+    100% { transform: var(--pose); z-index: calc(var(--n) - var(--d)); }
+  }
+  /* Retroceder: la tarjeta del fondo sale por la izquierda y sube al frente. */
+  @keyframes stack-enter {
+    0% { transform: var(--pose-from); z-index: calc(var(--n) - var(--d0)); }
+    49% { z-index: calc(var(--n) - var(--d0)); }
+    50% { transform: var(--pose-out); z-index: var(--z-top); }
+    100% { transform: var(--pose); z-index: var(--z-top); }
+  }
+
+  .stack-btn {
+    display: flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-ink);
+    border-radius: 9999px;
+    color: var(--color-ink);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .stack-btn:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .stack-btn:focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-stack { --stack-duration: 150ms; }
+    .stack-card {
+      transform: none;
+      opacity: 0;
+      transition: opacity var(--stack-duration) linear;
+    }
+    .stack-card[data-active] { opacity: 1; }
+    .stack-card.is-leaving,
+    .stack-card.is-entering { animation: none; }
+  }
+</style>

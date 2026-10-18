@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PetFriendly from '../components/PetFriendly.astro';
 import logoImage from '../images/45.png';
 import { Image } from 'astro:assets';
 import heroMain from '../images/hero-main.jpg';      // vertical, ej. pan/croissants
@@ -49,13 +50,14 @@ const icons = {
 
 const sede = {
   name: 'Bukë Chía',
-  address: 'Km 2, Chía, Cundinamarca', // TODO: dirección real
+  address: 'Km 2, Chía, Cundinamarca',
+  landmark: '200mts antes de C.C Fontanar',
   hours: [
     { days: 'Lunes a Jueves', time: '7:00 a.m. a 7:00 p.m.' },
     { days: 'Viernes y Sábado', time: '7:00 a.m. a 8:00 p.m.' }, 
-    { days: 'Domingos', time: '7:00 a.m. a 7:00 p.m.' }       
+    { days: 'Domingos y Festivos', time: '7:00 a.m. a 7:00 p.m.' }       
   ],
-  coords: '4.880245114039746, -74.03748474639707',         // Coordenadas google Maps
+  coords: '4.880076979736878, -74.03754124809025',         // Coordenadas google Maps
   whatsapp: '57XXXXXXXXXX',  // TODO: número con indicativo, sin + ni espacios
 };
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${sede.coords}`;
@@ -74,9 +76,9 @@ const secondaryActions = quick.slice(2);    // Horarios, Cómo llegar
 
 const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
 ---
-<Layout title={`${brand} | Panadería, café y repostería en Bogotá`} description="Pan de masa madre, café y repostería hechos cada día. Reserva tu mesa o pide para llevar.">
-  <header class="sticky top-0 z-30 border-b border-ink/10 bg-paper text-ink">
-    <div class="announcement-ribbon hidden sm:block" role="region" aria-label={announcement}>
+<Layout title={`${brand} | Panadería, café y repostería en Chía`} description="Pan de masa madre, café y repostería hechos cada día. Reserva tu mesa o pide para llevar.">
+  <header class="sticky top-0 z-30 border-b border-ink/10 bg-paper text-ink shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+    <div class="announcement-ribbon" role="region" aria-label={announcement}>
       <div class="announcement-track" aria-hidden="true">
         {Array.from({ length: 2 }).map(() => (
           <div class="announcement-group">
@@ -113,7 +115,7 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
   </header>
 
   <main>
-  <section class="bg-wheat">
+  <section class="bg-paper">
   <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 pt-8 pb-14 sm:px-6 md:grid-cols-[5fr_7fr] md:gap-16 md:py-16">
     <div>
       <h1 class="max-w-md font-display text-[clamp(2.75rem,9vw,4.5rem)] leading-[0.98] font-semibold tracking-[-0.045em]">
@@ -183,7 +185,16 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
 
 
     <!-- Cinta Opciones de comida -->
-    <section id="menu" class="mx-auto max-w-6xl px-6 py-8 md:py-14">
+    <div class="bg-paper" role="separator" aria-hidden="true">
+      <div class="mx-auto flex max-w-6xl items-center gap-4 px-6 pb-2">
+        <span class="h-px flex-1 bg-ink/20"></span>
+        <svg class="size-6 shrink-0 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons.coffee} />
+        <span class="h-px flex-1 bg-ink/20"></span>
+      </div>
+    </div>
+
+    <section id="menu" class="bg-paper">
+      <div class="mx-auto max-w-6xl px-6 py-10 md:py-6">
       <h2 class="text-center font-display text-3xl font-semibold tracking-tight md:text-5xl">¿Qué se te antoja ahora?</h2>
       <nav aria-label="Explorar el menú por momento del día" class="mt-8 flex flex-wrap justify-center gap-2">
         {menu.map((m, i) => (
@@ -193,6 +204,7 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
           </a>
         ))}
       </nav>
+      </div>
     </section>
 
     <!-- Panadería: reemplaza los bloques de color por fotos con <Image /> de astro:assets -->
@@ -262,6 +274,8 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
       </div>
     </section>
 
+    <PetFriendly whatsapp={sede.whatsapp} />
+
     <!-- Divisor -->
     <div class="mx-auto flex max-w-6xl items-center gap-4 px-6" role="separator" aria-hidden="true">
       <span class="h-px flex-1 bg-ink/20"></span>
@@ -277,6 +291,7 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
     <div>
       <h3 class="font-display text-2xl font-semibold">{sede.name}</h3>
       <p class="mt-2 text-ink/70">{sede.address}</p>
+      <p class="text-sm text-ink/50">{sede.landmark}</p>
 
       <dl class="mt-6 divide-y divide-ink/20 border-y border-ink/20">
         {sede.hours.map((h) => (
