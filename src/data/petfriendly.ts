@@ -14,15 +14,14 @@ export const petFriendlyImages: PetFriendlyImage[] = [
   { src: '/images/petfriendly/placeholder-4.svg', alt: 'Mesa con café y panadería junto a una mascota (foto por definir)', width: 800, height: 1000 },
 ];
 
-// TODO: textos provisionales. Validar con Bukë que reflejen la política real de mascotas.
+
 export const petFriendlyContent = {
   title: 'Pet Friendly',
   paragraph:
-    'En Bukë también hay lugar para tu mascota. Disfruta de tu café y tu panadería recién horneada en compañía de tu mejor amigo, en un ambiente tranquilo y relajado. Consulta con nosotros las condiciones antes de venir.',
+    'En Buke tu mejor amigo tambien es bienvenido. Disfruten juntos de un desayuno, un cafe o una tarde tranquila. Ademas, tenemos snacks especiales para consentirlo.',
   features: [
-    { label: 'Mascotas bienvenidas', icon: 'paw' },
+    { label: 'Snacks especiales', icon: 'paw' },
     { label: 'Espacio al aire libre', icon: 'terrace' },
-    { label: 'Agua para tu mascota', icon: 'drop' },
-    { label: 'Reserva con anticipación', icon: 'calendar' },
+    { label: 'Agua para tu mascota', icon: 'drop' }, 
   ],
 };

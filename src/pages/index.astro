@@ -6,13 +6,13 @@ import { Image } from 'astro:assets';
 import heroMain from '../images/hero-main.jpg';      // vertical, ej. pan/croissants
 import heroTop from '../images/hero-croissant.jpg';  // cuadrada
 import heroBottom from '../images/hero-cafe.jpg';
-
+import favoritesImage from '../images/favorites_soup.jpeg'
 
 
 
 const brand = 'Bukë';
-const announcement = 'Una buena mañana empieza con algo recién horneado';
-
+const announcement = ['Parqueadero gratuito', 'Desayunos', 'Brunch', 'Almuerzo', 'Repostería', 'Domicilios', 'Pet Friendly'];
+const announcementLabel = announcement.join(', ');
 const menu = [
   { id: 'panaderia', label: 'Panadería', icon: 'bread' },
   { id: 'desayunos', label: 'Desayuno', icon: 'sunrise' },
@@ -21,10 +21,10 @@ const menu = [
 ];
 
 const bakery = [
-  { name: 'Nombre', note: 'Descripción', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-72' },
-  { name: 'Nombre', note: 'Descripción', bg: 'bg-crust text-paper', span: 'h-72' },
-  { name: 'Nombre', note: 'Descripción', bg: 'bg-paper text-ink', span: 'h-56' },
-  { name: 'Nombre', note: 'Descripción', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-56' },
+  { name: 'Pan de Chocolate', note: 'Un hojaldre elaborado con dedicacion y horneado para conquistar desde el primer mordisco', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-72' },
+  { name: 'Lasagna Casera', note: 'Descripción', bg: 'bg-crust text-paper', span: 'h-72' },
+  { name: 'Cheesecakes', note: 'Descripción', bg: 'bg-paper text-ink', span: 'h-56' },
+  { name: 'Tamal Tolimense', note: 'Un clasico de nuestra cocina Colombiana, preparado con ese cuidad y sason que nos caracteriza', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-56', image: favoritesImage },
 ];
 
 const celebrationFeatures = [
@@ -79,12 +79,12 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
 ---
 <Layout title={`${brand} | Panadería, café y repostería en Chía`} description="Pan de masa madre, café y repostería hechos cada día. Reserva tu mesa o pide para llevar.">
   <header class="sticky top-0 z-30 border-b border-ink/10 bg-paper text-ink shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
-    <div class="announcement-ribbon" role="region" aria-label={announcement}>
+    <div class="announcement-ribbon" role="region" aria-label={announcementLabel}>
       <div class="announcement-track" aria-hidden="true">
         {Array.from({ length: 2 }).map(() => (
           <div class="announcement-group">
-            {Array.from({ length: 4 }).map(() => (
-              <span class="announcement-item">{announcement}</span>
+            {announcement.map((item) => (
+              <span class="announcement-item">{item}</span>
             ))}
           </div>
         ))}
@@ -120,12 +120,12 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
   <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 pt-8 pb-14 sm:px-6 md:grid-cols-[5fr_7fr] md:gap-16 md:py-16">
     <div>
       <h1 class="max-w-md font-display text-[clamp(2.75rem,9vw,4.5rem)] leading-[0.98] font-semibold tracking-[-0.045em]">
-        <span class="block">Tu desayuno,</span>
-        <span class="block">recién hecho</span>
-        <span class="block">y sin afán.</span>
+        <span class="block">Sabores Artesanales,</span>
+        <span class="block">para Disfrutar</span>
+        <span class="block">Todos los Días.</span>
       </h1>
       <p class="mt-5 max-w-sm text-lg text-ink/80">
-        Descripción
+        Ven por un desayuno, un cafe despues de entrenar, unas onces para la oficina o tus productos favoritos para casa, todo en un mismo lugar! 
       </p>
 
       <nav aria-label="Accesos rápidos" class="mt-8 max-w-md">
@@ -208,16 +208,23 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
       </div>
     </section>
 
-    <!-- Panadería: reemplaza los bloques de color por fotos con <Image /> de astro:assets -->
     <section id="panaderia" class="bg-ink py-10 text-paper md:py-16">
       <div class="mx-auto max-w-6xl px-6">
         <h2 class="font-display max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">Favoritos de Bukë</h2>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-paper/80 md:text-lg">
+          Una seleccion de nuestros imprescindibles,
+          hechos para disfrutar una y otra vez
+        </p>
         <div class="mt-12 grid gap-4 md:grid-cols-3">
           {bakery.map((b) => (
-            <div class={`flex items-end rounded-2xl p-6 ${b.bg} ${b.span}`}>
-              <div>
+            <div class={`relative flex items-end overflow-hidden rounded-2xl p-4 ${b.bg} ${b.span}`}>
+              {b.image && (
+                <Image src={b.image} alt={b.name} class="absolute inset-0 h-full w-full object-cover object-[45%_85%]" />
+                <div class="absolute inset-0 bg-linear-to-t from-paper from-0% via-paper/70 via-15% to-transparent to-45%" aria-hidden="true"></div>
+              )}
+              <div class="relative z-10">
                 <h3 class="font-display text-2xl font-semibold">{b.name}</h3>
-                <p class="opacity-80">{b.note}</p>
+                <p class="text-xs opacity-70 md:text-sm">{b.note}</p>
               </div>
             </div>
           ))}
@@ -233,8 +240,8 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
           <h2 class="font-display max-w-xl text-4xl leading-tight font-semibold tracking-tight md:text-5xl">
             Celebra tus mejores momentos en Bukë
           </h2>
-          <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink/80">
-            Cumpleaños, reuniones familiares, encuentros de amigos o reuniones de trabajo. En Bukë encontrarás un espacio cálido para compartir, con panadería recién horneada, platos artesanales y atención cercana.
+          <p class="mt-5 max-w-sm text-lg leading-relaxed text-ink/80">
+            ¿Una reunion de equipo, un cumpleaños o un encuentro con amigos? En Buke encontraras un ambiente acogedor, propuestas artesanales y atencion personalizada para disfrutar de cada ocasion. 
           </p>
 
           <a href="#ubicacion" class="mt-7 inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-ink px-7 font-medium text-paper transition-colors hover:bg-ink/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">

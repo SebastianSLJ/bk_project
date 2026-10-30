@@ -5,8 +5,10 @@ import breadImage from '../images/hero-cafe.jpg';
 import pastryImage from '../images/hero-croissant.jpg';
 import breakfastImage from '../images/hero-main.jpg';
 import logoImage from '../images/45.png';
+import favoritesImage from '../images/favorites_soup.jpeg'
 const brand = 'Bukë';
-const announcement = 'Una buena mañana empieza con algo recién horneado';
+const announcement = ['Pan artesanal', 'Desayunos', 'Almuerzos', 'Repostería'];
+const announcementLabel = announcement.join(', ');
 
 const categories = [
   { id: 'panaderia', label: 'Panadería', icon: 'bread' },
@@ -84,12 +86,12 @@ const categoryIcons: Record<string, string> = {
   description="Explora el menú de Bukë: panadería artesanal, desayunos, almuerzos, café y postres."
 >
   <header class="relative z-40 border-b border-ink/10 bg-paper text-ink shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
-    <div class="announcement-ribbon" role="region" aria-label={announcement}>
+    <div class="announcement-ribbon" role="region" aria-label={announcementLabel}>
       <div class="announcement-track" aria-hidden="true">
         {Array.from({ length: 2 }).map(() => (
           <div class="announcement-group">
-            {Array.from({ length: 4 }).map(() => (
-              <span class="announcement-item">{announcement}</span>
+            {announcement.map((item) => (
+              <span class="announcement-item">{item}</span>
             ))}
           </div>
         ))}
