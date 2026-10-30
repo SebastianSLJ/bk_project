@@ -21,10 +21,10 @@ const menu = [
 ];
 
 const bakery = [
-  { name: 'Pan de Chocolate', note: 'Un hojaldre elaborado con dedicacion y horneado para conquistar desde el primer mordisco', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-72' },
+  { name: 'Pan de Chocolate', note: 'Un hojaldre elaborado con dedicación y horneado para conquistar desde el primer mordisco.', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-72' },
   { name: 'Lasagna Casera', note: 'Descripción', bg: 'bg-crust text-paper', span: 'h-72' },
   { name: 'Cheesecakes', note: 'Descripción', bg: 'bg-paper text-ink', span: 'h-56' },
-  { name: 'Tamal Tolimense', note: 'Un clasico de nuestra cocina Colombiana, preparado con ese cuidad y sason que nos caracteriza', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-56', image: favoritesImage },
+  { name: 'Tamal Tolimense', note: 'Un clásico de nuestra cocina Colombiana, preparado con ese cuidad y sazón que nos caracteriza', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-56', image: favoritesImage },
 ];
 
 const celebrationFeatures = [
@@ -35,13 +35,14 @@ const celebrationFeatures = [
 ];
 
 const icons = {
-  sunrise: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4 18h16"/>',
+  sunrise: '<circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72 1.42-1.42"/>',
   lunch: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20m14-7V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
   coffee: '<path d="M10 2v2m4-2v2M4 8h15v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Zm15 2h1a2 2 0 1 1 0 4h-1M2 22h20"/>',
   terrace: '<path d="M3 11h18L12 3 3 11Zm9 0v10m-5 0h10M5 11l-2 10m16-10 2 10"/>',
   bread: '<path d="M3 10c0-3.3 4-6 9-6s9 2.7 9 6v8H3v-8Zm0 3h18m-13-3v2m4-3v2m4-2v2"/>',
-  service: '<circle cx="9" cy="7" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1m2-9h5l-2 4h-3l-2-4Zm2 4v2"/>',
-  groups: '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a7 7 0 0 1 14 0v1m1-5a5 5 0 0 1 5 5"/>',
+  service: '<path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95"/><path d="m2 15 6 6"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91"/>',
+  groups: '<path d="M17 21v-1a2 2 0 00-2-2H9a2 2 0 00-2 2v1"/><path d="M19 10h1a2 2 0 012 2v1"/><path d="M5 10H4a2 2 0 00-2 2v1"/><circle cx="12" cy="11" r="3"/><circle cx="18" cy="4" r="2"/><circle cx="6" cy="4" r="2"/>',
+  // groups: '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a7 7 0 0 1 14 0v1m1-5a5 5 0 0 1 5 5"/>',
   menu: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
   delivery: '<circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/>',
   clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
@@ -121,11 +122,11 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
     <div>
       <h1 class="max-w-md font-display text-[clamp(2.75rem,9vw,4.5rem)] leading-[0.98] font-semibold tracking-[-0.045em]">
         <span class="block">Sabores Artesanales,</span>
-        <span class="block">para Disfrutar</span>
+        <span class="block">Para Disfrutar</span>
         <span class="block">Todos los Días.</span>
       </h1>
       <p class="mt-5 max-w-sm text-lg text-ink/80">
-        Ven por un desayuno, un cafe despues de entrenar, unas onces para la oficina o tus productos favoritos para casa, todo en un mismo lugar! 
+        Ven por un desayuno, un café después de entrenar, unas onces para la oficina o tus productos favoritos para casa, ¡todo en un mismo lugar!  
       </p>
 
       <nav aria-label="Accesos rápidos" class="mt-8 max-w-md">
@@ -199,9 +200,9 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
       <h2 class="text-center font-display text-3xl font-semibold tracking-tight md:text-5xl">¿Qué se te antoja ahora?</h2>
       <nav aria-label="Explorar el menú por momento del día" class="mt-8 flex flex-wrap justify-center gap-2">
         {menu.map((m, i) => (
-          <a href={`/menu#${m.id}`} class="flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-ink px-5 py-2 font-medium transition-colors hover:bg-ink hover:text-paper">
+          <a href={`/menu#${m.id}`} class="flex min-h-11 w-45 items-center justify-center gap-2 rounded-full border-2 border-ink px-5 py-2 font-medium transition-colors hover:bg-ink hover:text-paper">
             <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[m.icon]} />
-            {m.label}
+            <span>{m.label}</span>
           </a>
         ))}
       </nav>
