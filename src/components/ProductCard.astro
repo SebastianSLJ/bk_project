@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import placeholder from '../assets/productos/placeholder.svg';
+
+interface Props {
+  nombre: string;
+  precio: number;
+  descripcion?: string;
+  imagen?: ImageMetadata;
+}
+
+const { nombre, precio, descripcion, imagen } = Astro.props;
+
+const formatoPrecio = new Intl.NumberFormat('es-CO', {
+  style: 'currency',
+  currency: 'COP',
+  maximumFractionDigits: 0,
+});
+---
+
+<li class="overflow-hidden rounded-2xl border border-ink/25 bg-paper shadow-sm transition duration-200 hover:-translate-y-1 hover:border-ink/50 hover:shadow-md">
+  <div class="aspect-[4/3] overflow-hidden bg-wheat">
+    <Image src={imagen ?? placeholder} alt={imagen ? nombre : ''} width={480} class="h-full w-full object-cover transition duration-300 hover:scale-105" />
+  </div>
+  <div class="flex min-h-36 flex-col p-3 sm:min-h-40 sm:p-5">
+    <h3 class="font-display text-base leading-snug font-semibold sm:text-xl">{nombre}</h3>
+    {descripcion && <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-ink/75 sm:text-sm">{descripcion}</p>}
+    <p class="mt-auto pt-3 text-sm font-bold sm:text-base">{formatoPrecio.format(precio)}</p>
+  </div>
+</li>

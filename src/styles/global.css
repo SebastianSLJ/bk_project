@@ -48,8 +48,10 @@ html { scroll-behavior: smooth; }
   .announcement-ribbon { padding-block: 0.65rem; }
   .announcement-item { font-size: 0.75rem; }
 }
+/* 4 copias del grupo: se desplaza exactamente una copia (25 %), así nunca queda hueco aunque
+   un grupo sea más angosto que la pantalla. Si cambia la cantidad de copias, cambie este porcentaje (100 / copias). */
 @keyframes announcement-scroll {
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-25%); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
