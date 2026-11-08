@@ -1,0 +1,142 @@
+---
+import { marca, eslogan, valores, columnas, redes, contacto, legal } from '../data/footer';
+import type { IconoValor, IconoRed } from '../data/footer';
+
+const iconosValor: Record<IconoValor, string> = {
+  pan: '<path d="M3 10c0-3.3 4-6 9-6s9 2.7 9 6v8H3v-8Zm0 3h18m-13-3v2m4-3v2m4-2v2"/>',
+  parqueadero: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9.5 17V7.5H13a3 3 0 0 1 0 6H9.5"/>',
+  mascota:
+    '<circle cx="5" cy="11" r="1.8"/><circle cx="9" cy="5.8" r="1.8"/><circle cx="15" cy="5.8" r="1.8"/><circle cx="19" cy="11" r="1.8"/><path d="M12 11c-3 0-6 3.4-6 6 0 1.7 1.3 2.5 3 2.5 1 0 2-.5 3-.5s2 .5 3 .5c1.7 0 3-.8 3-2.5 0-2.6-3-6-6-6Z"/>',
+  domicilio:
+    '<circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/>',
+};
+
+// Íconos rellenos (fill="currentColor"), sin texto visible.
+const iconosRed: Record<IconoRed, string> = {
+  facebook: 'M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-1 .4-1.7 1.8-1.7H17V3.8c-.3 0-1.3-.2-2.4-.2-2.5 0-4.1 1.5-4.1 4.2v2.7H7.8v3.3h2.7V22h3Z',
+  instagram:
+    'M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z',
+  tiktok:
+    'M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.2 6.2 0 1 0 5.2 6.1V8.6a7.4 7.4 0 0 0 4.3 1.4V6.8a4.3 4.3 0 0 1-4.3-4.3V2Z',
+};
+
+const linkClass =
+  'inline-flex min-h-11 items-center text-paper/80 underline-offset-4 transition-colors hover:text-wheat hover:underline focus-visible:text-wheat';
+const tituloClass = 'text-xs font-bold uppercase tracking-[0.2em] text-wheat';
+---
+
+<footer>
+  <!-- Franja de valores -->
+  <section aria-label="Lo que nos distingue" class="border-t border-ink/15 bg-paper text-ink">
+    <ul class="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-10 px-4 py-10 sm:px-6 md:grid-cols-4 md:gap-x-0 md:py-12">
+      {valores.map((valor) => (
+        <li class="flex flex-col items-center px-2 text-center md:px-6 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-ink/20">
+          <svg class="size-9 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={iconosValor[valor.icono]} />
+          <h3 class="mt-4 text-xs font-bold uppercase tracking-[0.18em] sm:text-sm">{valor.titulo}</h3>
+          <p class="mt-2 max-w-52 text-sm leading-relaxed text-ink/80">{valor.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Footer principal -->
+  <div class="overflow-hidden bg-ink text-paper">
+    <div class="mx-auto grid max-w-6xl gap-10 px-6 pt-14 pb-10 md:grid-cols-12 md:gap-8">
+      <!-- Marca -->
+      <div class="md:col-span-4">
+        <p class="font-display text-4xl font-bold tracking-tight">{marca}</p>
+        <p class="mt-3 max-w-xs text-base leading-relaxed text-paper/80">{eslogan}</p>
+        <ul class="mt-6 flex items-center gap-1 -ml-3">
+          {redes.map((red) => (
+            <li>
+              <a
+                href={red.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={red.nombre}
+                class="flex size-11 items-center justify-center rounded-full text-paper/80 transition-colors duration-200 hover:-translate-y-0.5 hover:text-wheat focus-visible:-translate-y-0.5 focus-visible:text-wheat motion-reduce:transition-none"
+              >
+                <svg class="size-6" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d={iconosRed[red.icono]} /></svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Enlaces -->
+      <div class="md:col-span-5">
+        <!-- Móvil: acordeón sin JS -->
+        <div class="border-t border-paper/20 md:hidden">
+          {columnas.map((col) => (
+            <nav aria-label={col.titulo} class="border-b border-paper/20">
+              <details class="group">
+                <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between [&::-webkit-details-marker]:hidden">
+                  <span class={tituloClass}>{col.titulo}</span>
+                  <svg class="size-4 text-wheat transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                </summary>
+                <ul class="pb-3">
+                  {col.enlaces.map((e) => (
+                    <li><a href={e.href} class={linkClass}>{e.label}</a></li>
+                  ))}
+                </ul>
+              </details>
+            </nav>
+          ))}
+        </div>
+
+        <!-- Desktop: siempre expandido -->
+        <div class="hidden gap-8 md:grid md:grid-cols-2">
+          {columnas.map((col) => (
+            <nav aria-label={col.titulo}>
+              <h3 class={tituloClass}>{col.titulo}</h3>
+              <ul class="mt-3">
+                {col.enlaces.map((e) => (
+                  <li><a href={e.href} class={linkClass}>{e.label}</a></li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+      </div>
+
+      <!-- Contacto -->
+      <div class="md:col-span-3">
+        <h3 class={tituloClass}>Contáctanos</h3>
+        <p class="mt-3 text-base leading-relaxed text-paper/80">Pide tu domicilio o haz tu reserva por WhatsApp.</p>
+        {contacto.telefono && <p><a href={`tel:${contacto.telefono.replace(/\s/g, '')}`} class={linkClass}>{contacto.telefono}</a></p>}
+        {contacto.correo && <p><a href={`mailto:${contacto.correo}`} class={linkClass}>{contacto.correo}</a></p>}
+        <!-- Sección de contacto por WhatsApp. -->
+        <a
+          href={contacto.whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-paper px-6 py-2 text-center text-sm leading-tight font-medium text-ink transition-colors hover:bg-wheat focus-visible:outline-paper"
+        >
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="border-t border-paper/20">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-3 text-sm text-paper/80 md:flex-row md:items-center md:justify-between">
+        <p>© {new Date().getFullYear()} {marca}. Chía, Colombia.</p>
+        {legal.length > 0 && (
+          <nav aria-label="Legal">
+            <ul class="flex flex-wrap gap-x-5">
+              {legal.map((e) => (
+                <li><a href={e.href} class={linkClass}>{e.label}</a></li>
+              ))}
+            </ul>
+          </nav>
+        )}
+        <a href="#" class={`${linkClass} gap-2 self-start md:self-auto`}>
+          Volver arriba
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Wordmark decorativo, recortado por el borde inferior -->
+    
+</footer>
