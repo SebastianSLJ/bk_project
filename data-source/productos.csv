@@ -1,0 +1,110 @@
+Producto,Descripción,Fotografia,Item,Precio,Selección múltiple
+Huevos Rancheros,"Huevos acompañados de queso, tomate, cebolla, maíz, salchicha, jamón y tocineta.",iCloud,001,$24.200,Desayuno
+Huevos al gusto (X1 Huevo),"Preparados al momento, a tu elección y con el acompañamiento que tu prefieras. ",iCloud,002,$5.200,Desayuno
+Huevos al gusto (X2 Huevos),"Dos huevos preparados a tu gusto, ideales para comenzar el día. ",iCloud,003,$10.000,Desayuno
+Arepa Paisa,"Arepa tradicional de maíz, dorada y perfecta para acompañar.",iCloud,006,$6.800,Desayuno
+Arepa Paisa con Queso,"Arepa de maíz dorada, acompañada de queso fundido.",iCloud,007,$9.600,Desayuno
+Envuelto de Mazorca,"Preparación tradicional de maíz, suave, tierna y ligeramente dulce.",iCloud,008,$8.200,"Desayuno, Tarde"
+Adición de Queso,Complemento fresco para personalizar tu desayuno.,iCloud,004,$3.100,"Desayuno, Tarde"
+Adición de Jamón,Complemento fresco para personalizar tu desayuno.,iCloud,005,$4.800,"Desayuno, Tarde"
+Porción de Queso Campesino o Doble Crema,"Quesos frescos de textura suave, a tu elección ideal para acompañar tus desayunos",iCloud,009,$7.600,"Desayuno, Tarde"
+Calentado,"Un clásico de la cocina colombiana, servido con todo el sabor de casa.",iCloud,010,$28.000,"Desayuno, Tarde"
+Tamal Grande,"Envuelto en hoja de bijao para darle ese sabor casero irresistible. ",iCloud,011,$13.400,"Desayuno, Tarde"
+Arroz con Huevo,"Una combinación clásica, sencilla y siempre presente en nuestra cocina.",iCloud,012,$16.800,"Desayuno, Tarde"
+Tamal Vegetariano,Una alternativa vegetariana para disfrutar uno de los clásicos colombianos.,iCloud,013,$15.600,"Desayuno, Tarde"
+"Caldo de Costilla porción grande ","Un consome intenso con costilla de res, papa sabanera y sabor a casa ",iCloud,014,$23.500,"Desayuno, Tarde"
+"Caldo de Costilla 1/2 porción ",,iCloud,015,$14.000,"Desayuno, Tarde"
+Changua porción grande,Servida al estilo ancestral con huevo tibio y calado.,iCloud,016,$14.700,"Desayuno, Tarde"
+Changua 1/2 porción,,iCloud,017,$10.000,"Desayuno, Tarde"
+"Cazuela Grande ","Acompañada de amasijos artesanales y coronada con queso hilado. ",iCloud,018,$21.000,"Desayuno, Tarde"
+"Cazuela 1/2 porción ",,iCloud,019,$12.600,"Desayuno, Tarde"
+Pancakes x2,"Dos pancakes esponjosos, perfectos para compartir o disfrutar sin prisa.",,020,$15.000,Desayuno
+"Pancakes x1 ","Pancake suave y esponjoso, ideal para disfrutar un desayuno dulce.",,021,$8.000,Desayuno
+Pancakes con Nutella y Fruta,Pancakes esponjosos acompañados de Nutella y fruta fresca.,,022,$17.000,"Desayuno, Tarde"
+Tostadas Francesas X2,"Dos tostadas doradas, suaves por dentro y llenas de sabor.",,023,$15.000,"Desayuno, Tarde"
+"Tostadas Francesas X2 con adición ",Tostadas francesas acompañadas de un complemento para personalizar cada bocado.,,024,$16.800,"Desayuno, Tarde"
+"Sánduche de Pavo, Cerdo Ahumado o Roast Beef",Sobre una hogaza artesanal de corteza crujiente y miga suave.,,025,$19.500,"Desayuno, Tarde"
+"Crema de Verduras ",Preparación cremosa de verduras.,iCloud,026,$18.500,Tarde
+"Crema de Tomate ","Preparación cremosa de tomate, con sabor suave y textura delicada. ",iCloud,027,$18.500,Tarde
+"Crema de auyama ",Crema suave de auyama con textura sedosa y sabor ligeramente dulce.,iCloud,028,$18.500,Tarde
+"Hamburguesa ",,,029,$35.000,Tarde
+Quiche,"Tarta salada francesa, con masa horneada y relleno suave y cremoso.",iCloud,030,$22.000,"Desayuno, Tarde"
+Choripan,"Chorizo acompañado de pan, una combinación clásica de sabor intenso.",,031,$22.500,Tarde
+Lasaña Casera,Capas de pasta y relleno horneadas hasta lograr una textura irresistible.,iCloud,032,$25.000,Tarde
+"Pastel de pollo ","Masa horneada con relleno de pollo, ideal para cualquier momento.",,033,$11.500,"Desayuno, Panaderia, Tarde"
+"Pastel de carne ","Masa dorada con relleno de carne, una preparación clásica. ",,034,$12.000,"Desayuno, Panaderia, Tarde"
+"Empanada de carne ","Masa crujiente con relleno de carne, perfecta para cualquier antojo.",,035,$7.200,"Panaderia, Tarde"
+"Empanada chilena ","Una preparación de inspiración chilena, con masa horneada y relleno salado.",,036,$8.600,"Panaderia, Tarde"
+"Porción de fruta ","Fruta fresca, ligera y perfecta para acompañar cualquier momento del día.",,037,$10.000,Desayuno
+"Fruta mixta ",Una selección de frutas frescas para disfrutar variedad en cada bocado.,,038,$10.500,Desayuno
+Granola con Yogurt y Fruta,"Yogurt cremoso, granola y fruta fresca en una combinación equilibrada.",,039,$21.000,Desayuno
+Porción de Torta,"Una tajada de repostería artesanal. ",,040,$10.500,"Reposteria, Tarde"
+Brownie con Helado,"Brownie de chocolate y helado, un contraste irresistible de temperaturas y texturas.",iCloud,041,$14.500,"Reposteria, Tarde"
+Espresso,"Café concentrado, de aroma intenso y sabor profundo.",,042,$6.500,Bebidas
+Machiatto,Espresso con un delicado toque de leche espumada.,,043,$7.800,Bebidas
+"Latte ","Café espresso combinado con leche vaporizada, de textura suave y cremosa.",,044,$10.200,Bebidas
+Capuccino,"Espresso, leche vaporizada y espuma cremosa en una combinación clásica.",,045,$10.200,Bebidas
+Capuccino con Amaretto,Capuccino tradicional con notas aromáticas y dulces de Amaretto.,,046,$15.000,Bebidas
+Mocaccino,Café espresso y chocolate unidos en una bebida cremosa.,,047,$10.600,Bebidas
+Americano,"Café de sabor equilibrado y aroma intenso, servido en taza.",,048,$7.800,Bebidas
+Café Frio o Frappe,"Café en versión fría, refrescante y perfecto para cualquier tarde.",,049,$12.600,Bebidas
+Café con Leche Doble Espresso,Doble espresso combinado con leche para un sabor más intenso.,,050,$14.000,Bebidas
+Café en leche Grande,"Café con leche, servido en una porción generosa y cremosa.",,051,$12.600,Bebidas
+Chocolate,"Bebida tradicional de chocolate caliente, ideal para acompañar tus mañanas.",iCloud,052,$11.200,Bebidas
+Milo,"Bebida de malta y chocolate, un clásico para disfrutar.",,053,$11.200,Bebidas
+Masato,"Bebida tradicional de sabor característico, perfecta para acompañar tus comidas.",,054,$8.000,Bebidas
+Migao Bukë,"Tradicional mezcla de pan y leche caliente, con una textura suave y cremosa, ideal para disfrutar en el desayuno.",,055,$25.000,"Desayuno, Tarde"
+Pan de Chocolate,"Pan horneado con chocolate. ",,056,$6.300,"Desayuno, Panaderia, Tarde"
+Croissant de Almendra,Hojaldre delicado con el sabor característico de la almendra.,,057,$8.800,"Desayuno, Panaderia, Tarde"
+Pastel Gloria,"Clásico de panadería, con una combinación dulce y tradicional.",,058,$5.200,"Desayuno, Panaderia, Tarde"
+Pasaboca,"Pequeña preparación de panadería, ideal para acompañar tus bebidas.",,059,$4.500,"Desayuno, Panaderia, Tarde"
+Roscones,Panadería tradicional de textura suave y sabor dulce.,,060,$6.000,"Desayuno, Panaderia, Tarde"
+Rollo de Canela,"Masa suave enrollada con canela, de aroma cálido y delicioso.",,061,$5.800,"Desayuno, Panaderia, Tarde"
+Pan de Avena Pequeño,Pan de textura suave elaborado con avena.,,062,$5.200,"Desayuno, Panaderia, Tarde"
+Pan Catalán,"Pan de corteza característica y miga suave, ideal para acompañar.",,063,$6.500,"Desayuno, Panaderia, Tarde"
+Croissant de Mantequilla,"Hojaldre dorado, delicado y elaborado con el sabor de la mantequilla.",,064,$4.700,"Desayuno, Panaderia, Tarde"
+"Palito de queso ","Masa horneada con queso, dorada y perfecta para cualquier antojo.",,065,$5.500,"Desayuno, Panaderia, Tarde"
+Pan de Yuca,"Pan tradicional de almidón de yuca y queso, de textura característica.",,066,$4.800,"Desayuno, Panaderia, Tarde"
+Pandebono,"Clásico colombiano de queso y almidón, dorado por fuera y suave por dentro.",,067,$4.800,"Desayuno, Panaderia, Tarde"
+Almojábana,"Pan tradicional de queso, muy suave. ",,068,$5.000,"Desayuno, Panaderia, Tarde"
+Pan Sandwich,"Pan suave y versátil, ideal para preparar tus sánduches favoritos.",,069,$4.400,"Desayuno, Panaderia, Tarde"
+Pan de Arándanos Pequeño,Pan suave con notas frutales de arándanos.,,070,$5.200,"Desayuno, Panaderia, Tarde"
+Pan de Semillas y Cereales Pequeño,Pan con semillas y cereales que aportan textura en cada tajada.,,071,$5.200,"Desayuno, Panaderia, Tarde"
+Pan Baguette Pequeño,Pan de corteza dorada y miga suave.,,072,$4.200,"Desayuno, Panaderia, Tarde"
+Pan en Horno de Leña,"Pan horneado en leña, con corteza característica y aroma tradicional.",,073,$6.500,"Desayuno, Panaderia, Tarde"
+Masa para Pizza,Masa lista para preparar pizzas caseras con tu combinación favorita.,,074,$8.400,"Panaderia, Tarde"
+"Pan de Hamburguesa ","Pan suave y ligero, ideal para preparar hamburguesas en casa.",,075,$3.300,"Panaderia, Tarde"
+Pan Brioche de Molde,"Pan de miga suave y delicada, ideal para tostadas y sánduches.",,076,$16.800,"Desayuno, Panaderia, Tarde"
+Pan de Yogurt en Molde,"Pan de textura suave, perfecto para desayunos y meriendas.",,077,$16.800,"Desayuno, Panaderia, Tarde"
+Pan Baguette,"Corteza dorada y crujiente con interior suave, ideal para compartir.",,078,$7.800,"Desayuno, Panaderia, Tarde"
+Pan Baguette de Tomate,Baguette con el toque característico del tomate.,,079,$12.600,"Desayuno, Panaderia, Tarde"
+Pan de Granja,"Pan de estilo artesanal, perfecto para acompañar comidas y compartir.",,080,$13.500,"Desayuno, Panaderia, Tarde"
+Pan de Semillas y Cereales,Combinación de semillas y cereales que aporta textura y carácter.,,081,$17.500,"Desayuno, Panaderia, Tarde"
+"Agua de Panela ","Bebida tradicional colombiana, caliente y reconfortante.",,082,$8.500,Bebidas
+Té,"Bebida aromática de infusión, ideal para disfrutar caliente en cualquier momento del día.",,083,$9.400,Bebidas
+Infusión,"Bebida caliente de aromas delicados, ideal para una pausa.",,084,$9.400,Bebidas
+Té Chai,Té especiado de notas aromáticas y cálidas.,,085,$13.000,Bebidas
+Chai en Leche de Almendra / Soya,"Chai especiado combinado con leche vegetal a tu elección, suave y aromático.",,086,$14.500,Bebidas
+Jugos Naturales,"Fruta fresca convertida en una bebida natural y refrescante.",,087,$10.500,Bebidas
+Jugos en Leche,Fruta y leche combinadas en una bebida cremosa.,,088,$13.000,Bebidas
+"Jugo verde ",Mezcla de ingredientes verdes en una bebida fresca y natural.,,089,$13.500,Bebidas
+Jugo de Mandarina,Sabor cítrico y delicado de mandarina en cada sorbo.,,091,$12.600,Bebidas
+Avena Casera,"Bebida tradicional de avena, cremosa y preparada para disfrutar fría.",,092,$10.700,Bebidas
+Milo Frio,El clásico sabor a malta y chocolate en versión fría.,,093,$11.200,Bebidas
+Vaso con Leche," Leche fresca, ideal para acompañar tus preparaciones favoritas.",,094,$6.300,Bebidas
+Kumis Alpina,,,095,$4.500,Bebidas
+Yogurt Alpina,,,096,$4.500,Bebidas
+Avena Alpina,,,097,$5.000,Bebidas
+Yox Alpina,,,098,$3.800,Bebidas
+Agua Manantial,,,099,$5.500,Bebidas
+Fuze Tea,,,100,$5.000,Bebidas
+Pony Malta,,,101,$5.200,Bebidas
+Gatorade,,,102,$6.500,Bebidas
+"Te Hatsu ",,,103,$9.000,Bebidas
+"Aloe Vera(Liche, Natural y Zero)",,,104,$13.000,Bebidas
+Bretaña,,,105,$5.000,Bebidas
+Ginger Ale,,,106,$5.000,Bebidas
+Gaseosa 400ml,,,107,$5.500,Bebidas
+Gaseosa 300ml,,,108,$5.000,Bebidas
+"Jugo de Naranja ","Bebida cítrica y refrescante, elaborada con naranja.",,090,$11.000,Bebidas
+"Sánduche de jamon y queso ",La combinación clásica de jamón y queso entre pan suave.,iCloud,025-1,$32.600,"Desayuno, Tarde"

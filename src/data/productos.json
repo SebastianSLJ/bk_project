@@ -1,0 +1,1153 @@
+[
+  {
+    "id": "huevos-rancheros",
+    "nombre": "Huevos Rancheros",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 24200,
+    "codigo": "001",
+    "descripcion": "Huevos acompañados de queso, tomate, cebolla, maíz, salchicha, jamón y tocineta."
+  },
+  {
+    "id": "huevos-al-gusto-x1-huevo",
+    "nombre": "Huevos al gusto (X1 Huevo)",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 5200,
+    "codigo": "002",
+    "descripcion": "Preparados al momento, a tu elección y con el acompañamiento que tu prefieras."
+  },
+  {
+    "id": "huevos-al-gusto-x2-huevos",
+    "nombre": "Huevos al gusto (X2 Huevos)",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 10000,
+    "codigo": "003",
+    "descripcion": "Dos huevos preparados a tu gusto, ideales para comenzar el día."
+  },
+  {
+    "id": "adicion-de-queso",
+    "nombre": "Adición de Queso",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 3100,
+    "codigo": "004",
+    "descripcion": "Complemento fresco para personalizar tu desayuno."
+  },
+  {
+    "id": "adicion-de-jamon",
+    "nombre": "Adición de Jamón",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 4800,
+    "codigo": "005",
+    "descripcion": "Complemento fresco para personalizar tu desayuno."
+  },
+  {
+    "id": "arepa-paisa",
+    "nombre": "Arepa Paisa",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 6800,
+    "codigo": "006",
+    "descripcion": "Arepa tradicional de maíz, dorada y perfecta para acompañar."
+  },
+  {
+    "id": "arepa-paisa-con-queso",
+    "nombre": "Arepa Paisa con Queso",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 9600,
+    "codigo": "007",
+    "descripcion": "Arepa de maíz dorada, acompañada de queso fundido."
+  },
+  {
+    "id": "envuelto-de-mazorca",
+    "nombre": "Envuelto de Mazorca",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 8200,
+    "codigo": "008",
+    "descripcion": "Preparación tradicional de maíz, suave, tierna y ligeramente dulce."
+  },
+  {
+    "id": "porcion-de-queso-campesino-o-doble-crema",
+    "nombre": "Porción de Queso Campesino o Doble Crema",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 7600,
+    "codigo": "009",
+    "descripcion": "Quesos frescos de textura suave, a tu elección ideal para acompañar tus desayunos"
+  },
+  {
+    "id": "calentado",
+    "nombre": "Calentado",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 28000,
+    "codigo": "010",
+    "descripcion": "Un clásico de la cocina colombiana, servido con todo el sabor de casa."
+  },
+  {
+    "id": "tamal-grande",
+    "nombre": "Tamal Grande",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 13400,
+    "codigo": "011",
+    "descripcion": "Envuelto en hoja de bijao para darle ese sabor casero irresistible."
+  },
+  {
+    "id": "arroz-con-huevo",
+    "nombre": "Arroz con Huevo",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 16800,
+    "codigo": "012",
+    "descripcion": "Una combinación clásica, sencilla y siempre presente en nuestra cocina."
+  },
+  {
+    "id": "tamal-vegetariano",
+    "nombre": "Tamal Vegetariano",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 15600,
+    "codigo": "013",
+    "descripcion": "Una alternativa vegetariana para disfrutar uno de los clásicos colombianos."
+  },
+  {
+    "id": "caldo-de-costilla-porcion-grande",
+    "nombre": "Caldo de Costilla porción grande",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 23500,
+    "codigo": "014",
+    "descripcion": "Un consome intenso con costilla de res, papa sabanera y sabor a casa"
+  },
+  {
+    "id": "caldo-de-costilla-1-2-porcion",
+    "nombre": "Caldo de Costilla 1/2 porción",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 14000,
+    "codigo": "015"
+  },
+  {
+    "id": "changua-porcion-grande",
+    "nombre": "Changua porción grande",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 14700,
+    "codigo": "016",
+    "descripcion": "Servida al estilo ancestral con huevo tibio y calado."
+  },
+  {
+    "id": "changua-1-2-porcion",
+    "nombre": "Changua 1/2 porción",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 10000,
+    "codigo": "017"
+  },
+  {
+    "id": "cazuela-grande",
+    "nombre": "Cazuela Grande",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 21000,
+    "codigo": "018",
+    "descripcion": "Acompañada de amasijos artesanales y coronada con queso hilado."
+  },
+  {
+    "id": "cazuela-1-2-porcion",
+    "nombre": "Cazuela 1/2 porción",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 12600,
+    "codigo": "019"
+  },
+  {
+    "id": "pancakes-x2",
+    "nombre": "Pancakes x2",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 15000,
+    "codigo": "020",
+    "descripcion": "Dos pancakes esponjosos, perfectos para compartir o disfrutar sin prisa."
+  },
+  {
+    "id": "pancakes-x1",
+    "nombre": "Pancakes x1",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 8000,
+    "codigo": "021",
+    "descripcion": "Pancake suave y esponjoso, ideal para disfrutar un desayuno dulce."
+  },
+  {
+    "id": "pancakes-con-nutella-y-fruta",
+    "nombre": "Pancakes con Nutella y Fruta",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 17000,
+    "codigo": "022",
+    "descripcion": "Pancakes esponjosos acompañados de Nutella y fruta fresca."
+  },
+  {
+    "id": "tostadas-francesas-x2",
+    "nombre": "Tostadas Francesas X2",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 15000,
+    "codigo": "023",
+    "descripcion": "Dos tostadas doradas, suaves por dentro y llenas de sabor."
+  },
+  {
+    "id": "tostadas-francesas-x2-con-adicion",
+    "nombre": "Tostadas Francesas X2 con adición",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 16800,
+    "codigo": "024",
+    "descripcion": "Tostadas francesas acompañadas de un complemento para personalizar cada bocado."
+  },
+  {
+    "id": "sanduche-de-pavo-cerdo-ahumado-o-roast-beef",
+    "nombre": "Sánduche de Pavo, Cerdo Ahumado o Roast Beef",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 19500,
+    "codigo": "025",
+    "descripcion": "Sobre una hogaza artesanal de corteza crujiente y miga suave."
+  },
+  {
+    "id": "sanduche-de-jamon-y-queso",
+    "nombre": "Sánduche de jamon y queso",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 32600,
+    "codigo": "025-1",
+    "descripcion": "La combinación clásica de jamón y queso entre pan suave."
+  },
+  {
+    "id": "crema-de-verduras",
+    "nombre": "Crema de Verduras",
+    "categorias": [
+      "tarde"
+    ],
+    "precio": 18500,
+    "codigo": "026",
+    "descripcion": "Preparación cremosa de verduras."
+  },
+  {
+    "id": "crema-de-tomate",
+    "nombre": "Crema de Tomate",
+    "categorias": [
+      "tarde"
+    ],
+    "precio": 18500,
+    "codigo": "027",
+    "descripcion": "Preparación cremosa de tomate, con sabor suave y textura delicada."
+  },
+  {
+    "id": "crema-de-auyama",
+    "nombre": "Crema de auyama",
+    "categorias": [
+      "tarde"
+    ],
+    "precio": 18500,
+    "codigo": "028",
+    "descripcion": "Crema suave de auyama con textura sedosa y sabor ligeramente dulce."
+  },
+  {
+    "id": "hamburguesa",
+    "nombre": "Hamburguesa",
+    "categorias": [
+      "tarde"
+    ],
+    "precio": 35000,
+    "codigo": "029"
+  },
+  {
+    "id": "quiche",
+    "nombre": "Quiche",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 22000,
+    "codigo": "030",
+    "descripcion": "Tarta salada francesa, con masa horneada y relleno suave y cremoso."
+  },
+  {
+    "id": "choripan",
+    "nombre": "Choripan",
+    "categorias": [
+      "tarde"
+    ],
+    "precio": 22500,
+    "codigo": "031",
+    "descripcion": "Chorizo acompañado de pan, una combinación clásica de sabor intenso."
+  },
+  {
+    "id": "lasana-casera",
+    "nombre": "Lasaña Casera",
+    "categorias": [
+      "tarde"
+    ],
+    "precio": 25000,
+    "codigo": "032",
+    "descripcion": "Capas de pasta y relleno horneadas hasta lograr una textura irresistible."
+  },
+  {
+    "id": "pastel-de-pollo",
+    "nombre": "Pastel de pollo",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 11500,
+    "codigo": "033",
+    "descripcion": "Masa horneada con relleno de pollo, ideal para cualquier momento."
+  },
+  {
+    "id": "pastel-de-carne",
+    "nombre": "Pastel de carne",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 12000,
+    "codigo": "034",
+    "descripcion": "Masa dorada con relleno de carne, una preparación clásica."
+  },
+  {
+    "id": "empanada-de-carne",
+    "nombre": "Empanada de carne",
+    "categorias": [
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 7200,
+    "codigo": "035",
+    "descripcion": "Masa crujiente con relleno de carne, perfecta para cualquier antojo."
+  },
+  {
+    "id": "empanada-chilena",
+    "nombre": "Empanada chilena",
+    "categorias": [
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 8600,
+    "codigo": "036",
+    "descripcion": "Una preparación de inspiración chilena, con masa horneada y relleno salado."
+  },
+  {
+    "id": "porcion-de-fruta",
+    "nombre": "Porción de fruta",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 10000,
+    "codigo": "037",
+    "descripcion": "Fruta fresca, ligera y perfecta para acompañar cualquier momento del día."
+  },
+  {
+    "id": "fruta-mixta",
+    "nombre": "Fruta mixta",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 10500,
+    "codigo": "038",
+    "descripcion": "Una selección de frutas frescas para disfrutar variedad en cada bocado."
+  },
+  {
+    "id": "granola-con-yogurt-y-fruta",
+    "nombre": "Granola con Yogurt y Fruta",
+    "categorias": [
+      "desayuno"
+    ],
+    "precio": 21000,
+    "codigo": "039",
+    "descripcion": "Yogurt cremoso, granola y fruta fresca en una combinación equilibrada."
+  },
+  {
+    "id": "porcion-de-torta",
+    "nombre": "Porción de Torta",
+    "categorias": [
+      "reposteria",
+      "tarde"
+    ],
+    "precio": 10500,
+    "codigo": "040",
+    "descripcion": "Una tajada de repostería artesanal."
+  },
+  {
+    "id": "brownie-con-helado",
+    "nombre": "Brownie con Helado",
+    "categorias": [
+      "reposteria",
+      "tarde"
+    ],
+    "precio": 14500,
+    "codigo": "041",
+    "descripcion": "Brownie de chocolate y helado, un contraste irresistible de temperaturas y texturas."
+  },
+  {
+    "id": "espresso",
+    "nombre": "Espresso",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 6500,
+    "codigo": "042",
+    "descripcion": "Café concentrado, de aroma intenso y sabor profundo."
+  },
+  {
+    "id": "machiatto",
+    "nombre": "Machiatto",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 7800,
+    "codigo": "043",
+    "descripcion": "Espresso con un delicado toque de leche espumada."
+  },
+  {
+    "id": "latte",
+    "nombre": "Latte",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 10200,
+    "codigo": "044",
+    "descripcion": "Café espresso combinado con leche vaporizada, de textura suave y cremosa."
+  },
+  {
+    "id": "capuccino",
+    "nombre": "Capuccino",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 10200,
+    "codigo": "045",
+    "descripcion": "Espresso, leche vaporizada y espuma cremosa en una combinación clásica."
+  },
+  {
+    "id": "capuccino-con-amaretto",
+    "nombre": "Capuccino con Amaretto",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 15000,
+    "codigo": "046",
+    "descripcion": "Capuccino tradicional con notas aromáticas y dulces de Amaretto."
+  },
+  {
+    "id": "mocaccino",
+    "nombre": "Mocaccino",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 10600,
+    "codigo": "047",
+    "descripcion": "Café espresso y chocolate unidos en una bebida cremosa."
+  },
+  {
+    "id": "americano",
+    "nombre": "Americano",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 7800,
+    "codigo": "048",
+    "descripcion": "Café de sabor equilibrado y aroma intenso, servido en taza."
+  },
+  {
+    "id": "cafe-frio-o-frappe",
+    "nombre": "Café Frio o Frappe",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 12600,
+    "codigo": "049",
+    "descripcion": "Café en versión fría, refrescante y perfecto para cualquier tarde."
+  },
+  {
+    "id": "cafe-con-leche-doble-espresso",
+    "nombre": "Café con Leche Doble Espresso",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 14000,
+    "codigo": "050",
+    "descripcion": "Doble espresso combinado con leche para un sabor más intenso."
+  },
+  {
+    "id": "cafe-en-leche-grande",
+    "nombre": "Café en leche Grande",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 12600,
+    "codigo": "051",
+    "descripcion": "Café con leche, servido en una porción generosa y cremosa."
+  },
+  {
+    "id": "chocolate",
+    "nombre": "Chocolate",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 11200,
+    "codigo": "052",
+    "descripcion": "Bebida tradicional de chocolate caliente, ideal para acompañar tus mañanas."
+  },
+  {
+    "id": "milo",
+    "nombre": "Milo",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 11200,
+    "codigo": "053",
+    "descripcion": "Bebida de malta y chocolate, un clásico para disfrutar."
+  },
+  {
+    "id": "masato",
+    "nombre": "Masato",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 8000,
+    "codigo": "054",
+    "descripcion": "Bebida tradicional de sabor característico, perfecta para acompañar tus comidas."
+  },
+  {
+    "id": "migao-buke",
+    "nombre": "Migao Bukë",
+    "categorias": [
+      "desayuno",
+      "tarde"
+    ],
+    "precio": 25000,
+    "codigo": "055",
+    "descripcion": "Tradicional mezcla de pan y leche caliente, con una textura suave y cremosa, ideal para disfrutar en el desayuno."
+  },
+  {
+    "id": "pan-de-chocolate",
+    "nombre": "Pan de Chocolate",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 6300,
+    "codigo": "056",
+    "descripcion": "Pan horneado con chocolate."
+  },
+  {
+    "id": "croissant-de-almendra",
+    "nombre": "Croissant de Almendra",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 8800,
+    "codigo": "057",
+    "descripcion": "Hojaldre delicado con el sabor característico de la almendra."
+  },
+  {
+    "id": "pastel-gloria",
+    "nombre": "Pastel Gloria",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5200,
+    "codigo": "058",
+    "descripcion": "Clásico de panadería, con una combinación dulce y tradicional."
+  },
+  {
+    "id": "pasaboca",
+    "nombre": "Pasaboca",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 4500,
+    "codigo": "059",
+    "descripcion": "Pequeña preparación de panadería, ideal para acompañar tus bebidas."
+  },
+  {
+    "id": "roscones",
+    "nombre": "Roscones",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 6000,
+    "codigo": "060",
+    "descripcion": "Panadería tradicional de textura suave y sabor dulce."
+  },
+  {
+    "id": "rollo-de-canela",
+    "nombre": "Rollo de Canela",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5800,
+    "codigo": "061",
+    "descripcion": "Masa suave enrollada con canela, de aroma cálido y delicioso."
+  },
+  {
+    "id": "pan-de-avena-pequeno",
+    "nombre": "Pan de Avena Pequeño",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5200,
+    "codigo": "062",
+    "descripcion": "Pan de textura suave elaborado con avena."
+  },
+  {
+    "id": "pan-catalan",
+    "nombre": "Pan Catalán",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 6500,
+    "codigo": "063",
+    "descripcion": "Pan de corteza característica y miga suave, ideal para acompañar."
+  },
+  {
+    "id": "croissant-de-mantequilla",
+    "nombre": "Croissant de Mantequilla",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 4700,
+    "codigo": "064",
+    "descripcion": "Hojaldre dorado, delicado y elaborado con el sabor de la mantequilla."
+  },
+  {
+    "id": "palito-de-queso",
+    "nombre": "Palito de queso",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5500,
+    "codigo": "065",
+    "descripcion": "Masa horneada con queso, dorada y perfecta para cualquier antojo."
+  },
+  {
+    "id": "pan-de-yuca",
+    "nombre": "Pan de Yuca",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 4800,
+    "codigo": "066",
+    "descripcion": "Pan tradicional de almidón de yuca y queso, de textura característica."
+  },
+  {
+    "id": "pandebono",
+    "nombre": "Pandebono",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 4800,
+    "codigo": "067",
+    "descripcion": "Clásico colombiano de queso y almidón, dorado por fuera y suave por dentro."
+  },
+  {
+    "id": "almojabana",
+    "nombre": "Almojábana",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5000,
+    "codigo": "068",
+    "descripcion": "Pan tradicional de queso, muy suave."
+  },
+  {
+    "id": "pan-sandwich",
+    "nombre": "Pan Sandwich",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 4400,
+    "codigo": "069",
+    "descripcion": "Pan suave y versátil, ideal para preparar tus sánduches favoritos."
+  },
+  {
+    "id": "pan-de-arandanos-pequeno",
+    "nombre": "Pan de Arándanos Pequeño",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5200,
+    "codigo": "070",
+    "descripcion": "Pan suave con notas frutales de arándanos."
+  },
+  {
+    "id": "pan-de-semillas-y-cereales-pequeno",
+    "nombre": "Pan de Semillas y Cereales Pequeño",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 5200,
+    "codigo": "071",
+    "descripcion": "Pan con semillas y cereales que aportan textura en cada tajada."
+  },
+  {
+    "id": "pan-baguette-pequeno",
+    "nombre": "Pan Baguette Pequeño",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 4200,
+    "codigo": "072",
+    "descripcion": "Pan de corteza dorada y miga suave."
+  },
+  {
+    "id": "pan-en-horno-de-lena",
+    "nombre": "Pan en Horno de Leña",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 6500,
+    "codigo": "073",
+    "descripcion": "Pan horneado en leña, con corteza característica y aroma tradicional."
+  },
+  {
+    "id": "masa-para-pizza",
+    "nombre": "Masa para Pizza",
+    "categorias": [
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 8400,
+    "codigo": "074",
+    "descripcion": "Masa lista para preparar pizzas caseras con tu combinación favorita."
+  },
+  {
+    "id": "pan-de-hamburguesa",
+    "nombre": "Pan de Hamburguesa",
+    "categorias": [
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 3300,
+    "codigo": "075",
+    "descripcion": "Pan suave y ligero, ideal para preparar hamburguesas en casa."
+  },
+  {
+    "id": "pan-brioche-de-molde",
+    "nombre": "Pan Brioche de Molde",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 16800,
+    "codigo": "076",
+    "descripcion": "Pan de miga suave y delicada, ideal para tostadas y sánduches."
+  },
+  {
+    "id": "pan-de-yogurt-en-molde",
+    "nombre": "Pan de Yogurt en Molde",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 16800,
+    "codigo": "077",
+    "descripcion": "Pan de textura suave, perfecto para desayunos y meriendas."
+  },
+  {
+    "id": "pan-baguette",
+    "nombre": "Pan Baguette",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 7800,
+    "codigo": "078",
+    "descripcion": "Corteza dorada y crujiente con interior suave, ideal para compartir."
+  },
+  {
+    "id": "pan-baguette-de-tomate",
+    "nombre": "Pan Baguette de Tomate",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 12600,
+    "codigo": "079",
+    "descripcion": "Baguette con el toque característico del tomate."
+  },
+  {
+    "id": "pan-de-granja",
+    "nombre": "Pan de Granja",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 13500,
+    "codigo": "080",
+    "descripcion": "Pan de estilo artesanal, perfecto para acompañar comidas y compartir."
+  },
+  {
+    "id": "pan-de-semillas-y-cereales",
+    "nombre": "Pan de Semillas y Cereales",
+    "categorias": [
+      "desayuno",
+      "panaderia",
+      "tarde"
+    ],
+    "precio": 17500,
+    "codigo": "081",
+    "descripcion": "Combinación de semillas y cereales que aporta textura y carácter."
+  },
+  {
+    "id": "agua-de-panela",
+    "nombre": "Agua de Panela",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 8500,
+    "codigo": "082",
+    "descripcion": "Bebida tradicional colombiana, caliente y reconfortante."
+  },
+  {
+    "id": "te",
+    "nombre": "Té",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 9400,
+    "codigo": "083",
+    "descripcion": "Bebida aromática de infusión, ideal para disfrutar caliente en cualquier momento del día."
+  },
+  {
+    "id": "infusion",
+    "nombre": "Infusión",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 9400,
+    "codigo": "084",
+    "descripcion": "Bebida caliente de aromas delicados, ideal para una pausa."
+  },
+  {
+    "id": "te-chai",
+    "nombre": "Té Chai",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 13000,
+    "codigo": "085",
+    "descripcion": "Té especiado de notas aromáticas y cálidas."
+  },
+  {
+    "id": "chai-en-leche-de-almendra-soya",
+    "nombre": "Chai en Leche de Almendra / Soya",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 14500,
+    "codigo": "086",
+    "descripcion": "Chai especiado combinado con leche vegetal a tu elección, suave y aromático."
+  },
+  {
+    "id": "jugos-naturales",
+    "nombre": "Jugos Naturales",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 10500,
+    "codigo": "087",
+    "descripcion": "Fruta fresca convertida en una bebida natural y refrescante."
+  },
+  {
+    "id": "jugos-en-leche",
+    "nombre": "Jugos en Leche",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 13000,
+    "codigo": "088",
+    "descripcion": "Fruta y leche combinadas en una bebida cremosa."
+  },
+  {
+    "id": "jugo-verde",
+    "nombre": "Jugo verde",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 13500,
+    "codigo": "089",
+    "descripcion": "Mezcla de ingredientes verdes en una bebida fresca y natural."
+  },
+  {
+    "id": "jugo-de-naranja",
+    "nombre": "Jugo de Naranja",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 11000,
+    "codigo": "090",
+    "descripcion": "Bebida cítrica y refrescante, elaborada con naranja."
+  },
+  {
+    "id": "jugo-de-mandarina",
+    "nombre": "Jugo de Mandarina",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 12600,
+    "codigo": "091",
+    "descripcion": "Sabor cítrico y delicado de mandarina en cada sorbo."
+  },
+  {
+    "id": "avena-casera",
+    "nombre": "Avena Casera",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 10700,
+    "codigo": "092",
+    "descripcion": "Bebida tradicional de avena, cremosa y preparada para disfrutar fría."
+  },
+  {
+    "id": "milo-frio",
+    "nombre": "Milo Frio",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 11200,
+    "codigo": "093",
+    "descripcion": "El clásico sabor a malta y chocolate en versión fría."
+  },
+  {
+    "id": "vaso-con-leche",
+    "nombre": "Vaso con Leche",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 6300,
+    "codigo": "094",
+    "descripcion": "Leche fresca, ideal para acompañar tus preparaciones favoritas."
+  },
+  {
+    "id": "kumis-alpina",
+    "nombre": "Kumis Alpina",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 4500,
+    "codigo": "095"
+  },
+  {
+    "id": "yogurt-alpina",
+    "nombre": "Yogurt Alpina",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 4500,
+    "codigo": "096"
+  },
+  {
+    "id": "avena-alpina",
+    "nombre": "Avena Alpina",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5000,
+    "codigo": "097"
+  },
+  {
+    "id": "yox-alpina",
+    "nombre": "Yox Alpina",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 3800,
+    "codigo": "098"
+  },
+  {
+    "id": "agua-manantial",
+    "nombre": "Agua Manantial",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5500,
+    "codigo": "099"
+  },
+  {
+    "id": "fuze-tea",
+    "nombre": "Fuze Tea",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5000,
+    "codigo": "100"
+  },
+  {
+    "id": "pony-malta",
+    "nombre": "Pony Malta",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5200,
+    "codigo": "101"
+  },
+  {
+    "id": "gatorade",
+    "nombre": "Gatorade",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 6500,
+    "codigo": "102"
+  },
+  {
+    "id": "te-hatsu",
+    "nombre": "Te Hatsu",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 9000,
+    "codigo": "103"
+  },
+  {
+    "id": "aloe-vera-liche-natural-y-zero",
+    "nombre": "Aloe Vera(Liche, Natural y Zero)",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 13000,
+    "codigo": "104"
+  },
+  {
+    "id": "bretana",
+    "nombre": "Bretaña",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5000,
+    "codigo": "105"
+  },
+  {
+    "id": "ginger-ale",
+    "nombre": "Ginger Ale",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5000,
+    "codigo": "106"
+  },
+  {
+    "id": "gaseosa-400ml",
+    "nombre": "Gaseosa 400ml",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5500,
+    "codigo": "107"
+  },
+  {
+    "id": "gaseosa-300ml",
+    "nombre": "Gaseosa 300ml",
+    "categorias": [
+      "bebidas"
+    ],
+    "precio": 5000,
+    "codigo": "108"
+  }
+]

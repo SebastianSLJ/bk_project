@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PetFriendly from '../components/PetFriendly.astro';
+import BouquetsCatalogo from '../components/BouquetsCatalogo.astro';
 import logoImage from '../images/45.png';
 import { Image } from 'astro:assets';
 import heroMain from '../images/hero-main.jpg';      // vertical, ej. pan/croissants
@@ -8,16 +9,16 @@ import heroTop from '../images/hero-croissant.jpg';  // cuadrada
 import heroBottom from '../images/hero-cafe.jpg';
 import favoritesImage from '../images/favorites_soup.jpeg'
 
-
+import { contacto } from '../data/contacto';
 
 const brand = 'Bukë';
 const announcement = ['Parqueadero gratuito', 'Desayunos', 'Brunch', 'Almuerzo', 'Repostería', 'Domicilios', 'Pet Friendly'];
 const announcementLabel = announcement.join(', ');
 const menu = [
   { id: 'panaderia', label: 'Panadería', icon: 'bread' },
-  { id: 'desayunos', label: 'Desayuno', icon: 'sunrise' },
-  { id: 'almuerzos', label: 'Almuerzo', icon: 'lunch' },
-  { id: 'cafe', label: 'Tarde', icon: 'coffee' },
+  { id: 'desayuno', label: 'Desayuno', icon: 'sunrise' },
+  { id: 'tarde', label: 'Almuerzo', icon: 'lunch' },
+  { id: 'tarde', label: 'Tarde', icon: 'coffee' },
 ];
 
 const bakery = [
@@ -60,7 +61,7 @@ const sede = {
     { days: 'Domingos y Festivos', time: '7:00 a.m. a 7:00 p.m.' }       
   ],
   coords: '4.880111, -74.037445',         // Coordenadas google Maps
-  whatsapp: '57XXXXXXXXXX',  // TODO: número con indicativo, sin + ni espacios
+  whatsapp: contacto.whatsapp,  
 };
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${sede.coords}`;
 
@@ -82,7 +83,7 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
   <header class="sticky top-0 z-30 border-b border-ink/10 bg-paper text-ink shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
     <div class="announcement-ribbon" role="region" aria-label={announcementLabel}>
       <div class="announcement-track" aria-hidden="true">
-        {Array.from({ length: 2 }).map(() => (
+        {Array.from({ length: 4 }).map(() => (
           <div class="announcement-group">
             {announcement.map((item) => (
               <span class="announcement-item">{item}</span>
@@ -285,6 +286,8 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
 
     <PetFriendly />
 
+    <BouquetsCatalogo />
+
     <!-- Divisor -->
     <div class="mx-auto flex max-w-6xl items-center gap-4 px-6" role="separator" aria-hidden="true">
       <span class="h-px flex-1 bg-ink/20"></span>
@@ -338,26 +341,6 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
 
   </main>
 
-  <footer class="bg-ink text-paper">
-    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between">
-      <p class="font-display text-2xl font-bold">{brand}</p>
-      <ul class="flex items-center gap-3">
-        <li>
-          <a href="#" class="inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/30 px-5 text-sm font-medium text-paper/90 transition-colors hover:border-paper hover:bg-paper hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper">
-            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg>
-            Instagram
-          </a>
-        </li>
-        <li>
-          <a href="#" class="inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/30 px-5 text-sm font-medium text-paper/90 transition-colors hover:border-paper hover:bg-paper hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper">
-            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
-            Contacto
-          </a>
-        </li>
-      </ul>
-      <p class="text-sm text-paper/60">© {new Date().getFullYear()} {brand}. Chía, Colombia.</p>
-    </div>
-  </footer>
 </Layout>
 
 <script>

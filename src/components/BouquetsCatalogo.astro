@@ -1,0 +1,231 @@
+---
+// Catálogo de bouquets. Tokens @theme: ink, paper, wheat, crust, clay. Fuentes: font-display / font-sans.
+// Edita `catalog`. Para activar "Plantas": agrega la clave `plants` (ver comentario) y aparecerán las pestañas.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { whatsappUrl } from '../data/contacto';
+
+interface Producto {
+  name: string;
+  price: string;
+  /** Nombre del archivo en src/assets/productos/ (se genera con `npm run img`). */
+  file: string;
+  alt: string;
+  /** false = no se muestra en el catálogo (aún sin foto). Ver "Cómo activar un producto" más abajo. */
+  visible?: boolean;
+}
+type Grupo = 'bouquets' | 'plants';
+
+// Las fotos viven en src/assets/productos/ y se optimizan con astro:assets.
+const imagenes = import.meta.glob<{ default: ImageMetadata }>('../assets/productos/*.{webp,png,jpg,jpeg,avif}', { eager: true });
+const imagenDe = (file: string) => imagenes[`../assets/productos/${file}`]?.default;
+
+// Cómo activar un producto que hoy está oculto (visible: false):
+//   1) npm run img -- <ruta-de-la-foto> <slug>   (ej. rosas-jardin; genera src/assets/productos/<slug>.webp)
+//   2) Borra la línea `visible: false` de ese producto. Con eso aparece en el catálogo.
+const catalog: Partial<Record<Grupo, Producto[]>> = {
+  bouquets: [
+    { name: 'Girasoles del Valle', price: '$65.000 – $98.000', file: 'girasoles-valle.webp', alt: 'Bouquet de girasoles amarillos y follaje verde' },
+    { name: 'Rosas de Jardín', price: '$65.000 – $90.000', file: 'rosas-jardin.webp', alt: 'Bouquet de rosas naranja y crema envuelto en papel con lazo' },
+    { name: 'Silvestre', price: '$43.000 – $63.000', file: 'silvestre.webp', alt: 'Bouquet de flores silvestres amarrado con rafia', visible: false },
+  ],
+  // TODO: activar "Plantas" cuando haya precios reales. Descomenta y reemplaza los precios:
+  // plants: [
+  //   { name: 'Suculentas', price: '$X – $Y', file: 'suculentas.webp', alt: 'Suculentas en maceta de barro' },
+  //   { name: 'Helecho', price: '$X – $Y', file: 'helecho.webp', alt: 'Helecho en maceta de barro' },
+  //   { name: 'Monstera', price: '$X – $Y', file: 'monstera.webp', alt: 'Monstera en maceta de barro' },
+  // ],
+};
+
+const meta: Record<Grupo, { label: string; noun: string; article: string }> = {
+  bouquets: { label: 'Bouquets', noun: 'bouquet', article: 'el' },
+  plants: { label: 'Plantas', noun: 'planta', article: 'la' },
+};
+
+// Solo productos visibles y con foto; un grupo sin productos no genera pestaña ni panel.
+// Un producto visible sin su archivo en src/assets/productos/ se omite (nunca se muestra un placeholder al cliente) y se avisa en el build.
+const tabs = (Object.keys(catalog) as Grupo[])
+  .map((id) => ({
+    id,
+    ...meta[id],
+    items: (catalog[id] ?? [])
+      .filter((p) => p.visible !== false)
+      .flatMap((p) => {
+        const imagen = imagenDe(p.file);
+        if (!imagen) {
+          console.warn(`[BouquetsCatalogo] "${p.name}" es visible pero no existe src/assets/productos/${p.file}; se omite del catálogo.`);
+          return [];
+        }
+        return [{ ...p, imagen }];
+      }),
+  }))
+  .filter((t) => t.items.length > 0);
+const hasTabs = tabs.length > 1;
+
+const link = (text: string) => whatsappUrl(text);
+const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
+---
+
+<!-- Divisor -->
+<div class="mx-auto flex max-w-6xl items-center gap-4 px-6" role="separator" aria-hidden="true">
+  <span class="h-px flex-1 bg-ink/20"></span>
+  <svg class="size-6 shrink-0 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="2"/><circle cx="12" cy="4.5" r="2"/><circle cx="12" cy="13.5" r="2"/><circle cx="7.5" cy="9" r="2"/><circle cx="16.5" cy="9" r="2"/><path d="M12 15.5V22m0-3c-2-.2-3.5-1.2-4-3m4 1c2-.2 3.5-1.2 4-3"/></svg>
+  <span class="h-px flex-1 bg-ink/20"></span>
+</div>
+
+<section id="bouquets" aria-labelledby="catalogo-title" class="overflow-x-clip bg-paper py-14 text-center md:py-12">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 id="catalogo-title" class="font-display text-balance text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+      Bouquets del momento
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink/80 md:text-lg">
+      Nuestra sección especial de Bouquets: Armados al día en Bukë, con flores frescas de temporada.
+    </p>
+
+    {hasTabs && (
+      <div role="tablist" aria-label="Categoría" class="mt-7 flex justify-center gap-8 lg:mt-9" data-tablist>
+        {tabs.map((t, i) => (
+          <button type="button" role="tab" id={`tab-${t.id}`} aria-controls="panel-catalogo"
+            aria-selected={i === 0 ? 'true' : 'false'} data-tab={t.id}
+            class="min-h-11 px-1 text-xs font-medium uppercase tracking-[0.2em] text-ink/85 underline decoration-transparent decoration-1 underline-offset-[6px] transition-colors duration-200 ease-out hover:text-ink focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-clay aria-selected:font-bold aria-selected:text-ink aria-selected:decoration-ink">
+            {t.label}
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div id="panel-catalogo" role={hasTabs ? 'tabpanel' : undefined} aria-labelledby={hasTabs ? 'tab-bouquets' : undefined} data-panel
+    class="mt-8 lg:mt-10">
+    {tabs.map((t, ti) => (
+      <div data-group={t.id} hidden={ti !== 0}>
+        <!-- Móvil: carrusel snap (72%). ≥640px: grid de 3 columnas -->
+        <ul data-track
+          class="mx-auto flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 py-2 [scrollbar-width:none] sm:flex sm:flex-wrap sm:justify-center sm:gap-6 sm:overflow-visible sm:px-6 lg:gap-x-12 [&::-webkit-scrollbar]:hidden">
+          {t.items.map((p, i) => (
+            <li class="basis-[72%] shrink-0 snap-start sm:w-[calc((100%-3rem)/3)] sm:basis-auto lg:w-[calc((100%-6rem)/3)]" style={`--d:${i * 100}ms`}>
+              <a href={link(`Hola, quiero ${t.article} ${t.noun} ${p.name}`)} target="_blank" rel="noopener noreferrer"
+                class="group block text-center text-ink focus-visible:outline-3 focus-visible:outline-offset-6 focus-visible:outline-clay">
+                <!-- IMPORTANTE: ningún ancestro del <img> (a, div, li, ul, panel, section) puede crear contexto de
+                     apilamiento (opacity<1, translate/scale/transform, filter, will-change, isolation, z-index),
+                     o mix-blend-multiply deja de fundir el blanco con el fondo. Las animaciones van en el propio
+                     <img>, el nombre y el precio (ver <style> al final). -->
+                <div class="flex aspect-[4/5] items-center justify-center">
+                  <Image src={p.imagen} alt={p.alt} width={720} height={900} loading="lazy" class="cat-img size-full object-contain mix-blend-multiply sm:group-hover:scale-[1.03]" />
+                </div>
+                <span class="mt-6 block">
+                  <span class="cat-name font-display text-xl font-semibold leading-snug tracking-tight [background:linear-gradient(currentColor,currentColor)_0_100%/0_1px_no-repeat] pb-[3px] group-hover:bg-[length:100%_1px] group-focus-visible:bg-[length:100%_1px]">{p.name}</span>
+                </span>
+                <span class="cat-price mt-1.5 block text-sm leading-snug text-ink/80">{p.price}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <!-- Puntos (solo móvil), uno por producto -->
+        <div class="mt-5 flex justify-center gap-2 sm:hidden" aria-hidden="true" data-dots>
+          {t.items.map((_, i) => (
+            <i class:list={['block size-1.5 rounded-full transition-colors duration-200', i === 0 ? 'bg-ink' : 'bg-wheat']}></i>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-10 flex justify-center px-6 lg:mt-12">
+    <a href={generalLink} target="_blank" rel="noopener noreferrer"
+      class="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-full border-2 border-ink px-6 font-medium transition-colors hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink active:opacity-80">
+      <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-5.1A8.5 8.5 0 1 1 8.2 19.4L3 21z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.6-2-1-.8.8c-.9-.4-1.7-1.2-2.1-2.1l.8-.8-1-2L9 9.5z"/></svg>
+      Pedir por WhatsApp
+    </a>
+  </div>
+</section>
+
+<script>
+  const root = document.getElementById('bouquets')!;
+  const panel = root.querySelector<HTMLElement>('[data-panel]')!;
+  const tabBtns = [...root.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+  const groups = [...root.querySelectorAll<HTMLElement>('[data-group]')];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1) Tabs: fade 150 ms, reset del carrusel, aria-selected + flechas ←/→ (solo si hay más de una categoría)
+  function select(id: string, focus = false) {
+    const current = tabBtns.find((b) => b.getAttribute('aria-selected') === 'true')?.dataset.tab;
+    if (id === current) return;
+    panel.classList.add('is-switching');
+    setTimeout(() => {
+      tabBtns.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === id)));
+      groups.forEach((g) => { g.hidden = g.dataset.group !== id; });
+      panel.setAttribute('aria-labelledby', `tab-${id}`);
+      groups.find((g) => g.dataset.group === id)?.querySelector('[data-track]')?.scrollTo({ left: 0 });
+      panel.classList.remove('is-switching');
+    }, reduce ? 0 : 150);
+    if (focus) document.getElementById(`tab-${id}`)?.focus();
+  }
+  tabBtns.forEach((b) => b.addEventListener('click', () => select(b.dataset.tab!)));
+  root.querySelector('[data-tablist]')?.addEventListener('keydown', (e) => {
+    const k = (e as KeyboardEvent).key;
+    if (k !== 'ArrowRight' && k !== 'ArrowLeft') return;
+    e.preventDefault();
+    const i = tabBtns.findIndex((b) => b.getAttribute('aria-selected') === 'true');
+    const next = tabBtns[(i + (k === 'ArrowRight' ? 1 : -1) + tabBtns.length) % tabBtns.length];
+    select(next.dataset.tab!, true);
+  });
+
+  // 2) Puntos del carrusel móvil: el paso se mide con la posición real de las tarjetas (incluye el gap)
+  groups.forEach((g) => {
+    const track = g.querySelector<HTMLElement>('[data-track]')!;
+    const dots = [...g.querySelectorAll<HTMLElement>('[data-dots] i')];
+    track.addEventListener('scroll', () => {
+      const [a, b] = [track.children[0], track.children[1]] as (HTMLElement | undefined)[];
+      const step = a && b ? b.offsetLeft - a.offsetLeft : (a?.offsetWidth ?? 1);
+      const idx = Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / step)));
+      dots.forEach((d, n) => { d.classList.toggle('bg-ink', n === idx); d.classList.toggle('bg-wheat', n !== idx); });
+    }, { passive: true });
+  });
+
+  // 3) Entrada única al hacer scroll: fade + translate-y-3, escalonada 100 ms (--d)
+  if (!reduce && 'IntersectionObserver' in window) {
+    root.classList.add('reveal-armed');
+    const maxItems = Math.max(...groups.map((g) => g.querySelectorAll('li').length));
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        requestAnimationFrame(() => requestAnimationFrame(() => root.classList.replace('reveal-armed', 'reveal-in')));
+        // Al terminar la entrada se quita la clase: no queda ningún translate/opacity residual.
+        setTimeout(() => root.classList.remove('reveal-in'), 600 + 100 * maxItems + 200);
+        io.disconnect();
+      }
+    }, { threshold: 0.15 });
+    io.observe(panel);
+  }
+</script>
+
+<style>
+  /* Todo lo animable vive en img / nombre / precio, nunca en ancestros del img. */
+  .cat-img { transition: scale 400ms ease-out, opacity 150ms ease-out; }
+  .cat-name { transition: background-size 300ms ease-out, opacity 150ms ease-out; }
+  .cat-price { transition: opacity 150ms ease-out; }
+
+  /* Fade al cambiar de pestaña */
+  .is-switching .cat-img,
+  .is-switching .cat-name,
+  .is-switching .cat-price { opacity: 0; }
+
+  /* Entrada única al hacer scroll: fade + translate-y-3, escalonada con --d (definida en cada <li>) */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-armed .cat-img,
+    .reveal-armed .cat-name,
+    .reveal-armed .cat-price { opacity: 0; translate: 0 0.75rem; }
+
+    .reveal-in .cat-img,
+    .reveal-in .cat-name,
+    .reveal-in .cat-price {
+      opacity: 1;
+      translate: 0 0;
+      transition: opacity 600ms ease-out var(--d), translate 600ms ease-out var(--d), scale 400ms ease-out, background-size 300ms ease-out;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cat-img, .cat-name, .cat-price { transition: none; }
+  }
+</style>

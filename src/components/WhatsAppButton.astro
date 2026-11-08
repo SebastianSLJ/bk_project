@@ -1,4 +1,5 @@
 ---
+import { contacto } from '../data/contacto';
 interface Props {
   phone?: string;
   message?: string;
@@ -6,8 +7,8 @@ interface Props {
 }
 
 const {
-  phone = '',
-  message = 'Hola, necesito ayuda.',
+  phone = contacto.whatsapp,
+  message = contacto.mensajeDomicilio,
   position = 'bottom-right',
 } = Astro.props;
 
