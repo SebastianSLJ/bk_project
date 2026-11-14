@@ -103,14 +103,14 @@ const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
         <ul data-track
           class="mx-auto flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 py-2 [scrollbar-width:none] sm:flex sm:flex-wrap sm:justify-center sm:gap-6 sm:overflow-visible sm:px-6 lg:gap-x-12 [&::-webkit-scrollbar]:hidden">
           {t.items.map((p, i) => (
-            <li class="basis-[72%] shrink-0 snap-start sm:w-[calc((100%-3rem)/3)] sm:basis-auto lg:w-[calc((100%-6rem)/3)]" style={`--d:${i * 100}ms`}>
+            <li class="basis-[58%] shrink-0 snap-start sm:w-[calc((100%-3rem)/3)] sm:basis-auto lg:w-[calc((100%-6rem)/3)]" style={`--d:${i * 100}ms`}>
               <a href={link(`Hola, quiero ${t.article} ${t.noun} ${p.name}`)} target="_blank" rel="noopener noreferrer"
                 class="group block text-center text-ink focus-visible:outline-3 focus-visible:outline-offset-6 focus-visible:outline-clay">
                 <!-- IMPORTANTE: ningún ancestro del <img> (a, div, li, ul, panel, section) puede crear contexto de
                      apilamiento (opacity<1, translate/scale/transform, filter, will-change, isolation, z-index),
                      o mix-blend-multiply deja de fundir el blanco con el fondo. Las animaciones van en el propio
                      <img>, el nombre y el precio (ver <style> al final). -->
-                <div class="flex aspect-[4/5] items-center justify-center">
+                <div class="mx-auto flex aspect-[4/5] w-full max-w-[16rem] items-center justify-center">
                   <Image src={p.imagen} alt={p.alt} width={720} height={900} loading="lazy" class="cat-img size-full object-contain mix-blend-multiply sm:group-hover:scale-[1.03]" />
                 </div>
                 <span class="mt-6 block">

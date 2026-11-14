@@ -12,6 +12,26 @@ const announcementLabel = announcement.join(', ');
 
 const disponibles = (await getCollection('productos', ({ data }) => data.disponible)).map((p) => p.data);
 
+const esAdicion = (nombre: string) => /^adici[oó]n/i.test(nombre);
+
+// Orden dentro de una categoría: primero los ids de `orden` (en ese orden), luego el resto (orden del JSON)
+// y, si `adicionesAlFinal`, las adiciones no listadas al final. Ver src/data/categorias.mjs.
+function ordenar<T extends { id: string; nombre: string }>(
+  c: { id: string; orden?: string[]; adicionesAlFinal?: boolean },
+  items: T[],
+): T[] {
+  const orden = c.orden ?? [];
+  for (const id of orden) {
+    if (!items.some((p) => p.id === id)) console.warn(`[menu] "${id}" está en el orden de "${c.id}" pero no existe o no pertenece a esa categoría.`);
+  }
+  const rank = (p: T) => {
+    const i = orden.indexOf(p.id);
+    if (i !== -1) return i;
+    return orden.length + (c.adicionesAlFinal && esAdicion(p.nombre) ? 1 : 0);
+  };
+  return [...items].sort((a, b) => rank(a) - rank(b)); // sort estable
+}
+
 // Una sección por categoría (un producto puede estar en varias); se omiten las vacías.
 const products = categorias
   .map((c) => ({
@@ -19,7 +39,7 @@ const products = categorias
     title: c.label,
     description: c.description,
     icon: c.icon,
-    items: disponibles.filter((p) => p.categorias.includes(c.id)),
+    items: ordenar(c, disponibles.filter((p) => p.categorias.includes(c.id))),
   }))
   .filter((c) => c.items.length > 0);
 
