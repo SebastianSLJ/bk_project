@@ -7,24 +7,25 @@
 // adicionesAlFinal: true → products labeled "Adición…" (Add-on) that are not included in `orden` will be placed at the end.
 export const categorias = [
   {
-    id: 'panaderia', label: 'Panadería', icon: 'bread', description: 'Pan artesanal y masas horneadas cada día.',
+    id: 'panaderia', label: 'Panadería', icon: 'bread', description: 'Descubre nuestra selección de panadería artesanal:',
     orden: [],
   },
   {
-    id: 'desayuno', label: 'Desayuno', icon: 'sunrise', description: 'Para empezar el día con sabor a casa.',
+    id: 'desayuno', label: 'Desayuno', icon: 'sunrise', description: 'El desayuno no debería tener horario:',
+    adicionesAlFinal: true, 
     orden: [],
   },
   {
-    id: 'tarde', label: 'Tarde', icon: 'coffee', description: 'Platos, café y bebidas para el resto del día.',
+    id: 'tarde', label: 'Tarde', icon: 'coffee', description: 'Encuentra opciones artesanales, sabores caseros y antojos para disfrutar sin afán:',
     adicionesAlFinal: true,
     orden: ['envuelto-de-mazorca', 'tamal-grande'],
   },
   {
-    id: 'bebidas', label: 'Bebidas', icon: 'drink', description: 'Café, jugos, infusiones y bebidas frías.',
+    id: 'bebidas', label: 'Bebidas', icon: 'drink', description: 'Encuentra tu bebida favorita y hazla parte de tu momento Bukë',
     orden: [],
   },
   {
-    id: 'reposteria', label: 'Repostería', icon: 'dessert', description: 'Algo dulce para cerrar bien.',
+    id: 'reposteria', label: 'Repostería', icon: 'dessert', description: 'Descubre nuestra selección artesanal o encuentra tu favorito',
     orden: [],
   },
 ];

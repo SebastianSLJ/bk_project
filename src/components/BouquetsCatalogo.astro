@@ -25,8 +25,9 @@ const imagenDe = (file: string) => imagenes[`../assets/productos/${file}`]?.defa
 //   2) Borra la línea `visible: false` de ese producto. Con eso aparece en el catálogo.
 const catalog: Partial<Record<Grupo, Producto[]>> = {
   bouquets: [
-    { name: 'Girasoles del Valle', price: '$65.000 – $98.000', file: 'girasoles-valle.webp', alt: 'Bouquet de girasoles amarillos y follaje verde' },
-    { name: 'Rosas de Jardín', price: '$65.000 – $90.000', file: 'rosas-jardin.webp', alt: 'Bouquet de rosas naranja y crema envuelto en papel con lazo' },
+    { name: 'Rosas x12', price: '$30.000', file: 'rosas-x12.webp', alt: 'Ramo de 12 rosas rojas envuelto en papel kraft y amarrado con cuerda' },
+    { name: 'Rosas x24', price: '$40.000', file: 'rosas-x24.webp', alt: 'Ramo de 24 rosas rojas envuelto en papel kraft y amarrado con cuerda' },
+    { name: 'Astromelias', price: '$22.000', file: 'astromelias.webp', alt: 'Ramo de astromelias de varios colores envuelto en papel kraft y amarrado con cuerda' },
     { name: 'Silvestre', price: '$43.000 – $63.000', file: 'silvestre.webp', alt: 'Bouquet de flores silvestres amarrado con rafia', visible: false },
   ],
   // TODO: activar "Plantas" cuando haya precios reales. Descomenta y reemplaza los precios:
@@ -73,13 +74,13 @@ const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
   <span class="h-px flex-1 bg-ink/20"></span>
 </div>
 
-<section id="bouquets" aria-labelledby="catalogo-title" class="overflow-x-clip bg-paper py-14 text-center md:py-12">
+<section id="bouquets" aria-labelledby="catalogo-title" class="scroll-mt-28 overflow-x-clip bg-paper py-14 text-center md:py-12">
   <div class="mx-auto max-w-6xl px-6">
     <h2 id="catalogo-title" class="font-display text-balance text-3xl font-semibold tracking-tight text-ink md:text-5xl">
-      Bouquets del momento
+      Descubre Nuestros Ramos
     </h2>
     <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink/80 md:text-lg">
-      Nuestra sección especial de Bouquets: Armados al día en Bukë, con flores frescas de temporada.
+     Para regalar, compartir o simplemente sorprender. <br/> -Puedes recoger en Bukë o recibir en casa-
     </p>
 
     {hasTabs && (
@@ -103,14 +104,14 @@ const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
         <ul data-track
           class="mx-auto flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 py-2 [scrollbar-width:none] sm:flex sm:flex-wrap sm:justify-center sm:gap-6 sm:overflow-visible sm:px-6 lg:gap-x-12 [&::-webkit-scrollbar]:hidden">
           {t.items.map((p, i) => (
-            <li class="basis-[58%] shrink-0 snap-start sm:w-[calc((100%-3rem)/3)] sm:basis-auto lg:w-[calc((100%-6rem)/3)]" style={`--d:${i * 100}ms`}>
+            <li class="basis-[50%] shrink-0 snap-start sm:w-[calc((100%-3rem)/3)] sm:basis-auto lg:w-[calc((100%-6rem)/3)]" style={`--d:${i * 100}ms`}>
               <a href={link(`Hola, quiero ${t.article} ${t.noun} ${p.name}`)} target="_blank" rel="noopener noreferrer"
                 class="group block text-center text-ink focus-visible:outline-3 focus-visible:outline-offset-6 focus-visible:outline-clay">
                 <!-- IMPORTANTE: ningún ancestro del <img> (a, div, li, ul, panel, section) puede crear contexto de
                      apilamiento (opacity<1, translate/scale/transform, filter, will-change, isolation, z-index),
                      o mix-blend-multiply deja de fundir el blanco con el fondo. Las animaciones van en el propio
                      <img>, el nombre y el precio (ver <style> al final). -->
-                <div class="mx-auto flex aspect-[4/5] w-full max-w-[16rem] items-center justify-center">
+                <div class="mx-auto flex aspect-[4/5] w-full max-w-[13rem] items-center justify-center">
                   <Image src={p.imagen} alt={p.alt} width={720} height={900} loading="lazy" class="cat-img size-full object-contain mix-blend-multiply sm:group-hover:scale-[1.03]" />
                 </div>
                 <span class="mt-6 block">
@@ -131,7 +132,9 @@ const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
     ))}
   </div>
 
-  <div class="mt-10 flex justify-center px-6 lg:mt-12">
+  <p class="mt-8 px-6 text-xs text-ink/80 lg:mt-10">Los colores y disponibilidad pueden variar según el día.</p>
+
+  <div class="mt-5 flex justify-center px-6">
     <a href={generalLink} target="_blank" rel="noopener noreferrer"
       class="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-full border-2 border-ink px-6 font-medium transition-colors hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink active:opacity-80">
       <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-5.1A8.5 8.5 0 1 1 8.2 19.4L3 21z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.6-2-1-.8.8c-.9-.4-1.7-1.2-2.1-2.1l.8-.8-1-2L9 9.5z"/></svg>
