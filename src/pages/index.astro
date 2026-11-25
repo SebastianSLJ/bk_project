@@ -4,16 +4,31 @@ import PetFriendly from '../components/PetFriendly.astro';
 import BouquetsCatalogo from '../components/BouquetsCatalogo.astro';
 import logoImage from '../images/45.png';
 import { Image } from 'astro:assets';
-import heroMain from '../images/hero-main.jpg';      // vertical, ej. pan/croissants
+import { getCollection } from 'astro:content';
+import heroVertical from '../images/hero/vertical_image.png';
+import heroTopLeft from '../images/hero/topleft_herp.png';
+import heroBottomLeft from '../images/hero/bottomleft_hero.jpg';
+import momentTop from '../images/moments/Top_moments.png';
+import momentLeft from '../images/moments/left_moments.png';
+import momentBottom from '../images/moments/bottom_moments.png';
+import heroMain from '../images/hero-main.jpg';    // vertical, ej. pan/croissants
 import heroTop from '../images/hero-croissant.jpg';  // cuadrada
 import heroBottom from '../images/hero-cafe.jpg';
-import favoritesImage from '../images/favorites_soup.jpeg'
+import panChocolate from '../images/favorites/pan-de-chocolate.jpg';
+import lasagna from '../images/favorites/lasagna-casera.jpg';
+import panGranja from '../images/favorites/pan-granja.jpg';
+import cheesecake from '../images/favorites/cheesecake.jpg';
 
-import { contacto } from '../data/contacto';
+import { contacto, mapsUrl } from '../data/contacto';
+import { categorias } from '../data/categorias.mjs';
 
 const brand = 'Bukë';
 const announcement = ['Parqueadero gratuito', 'Desayunos', 'Brunch', 'Almuerzo', 'Repostería', 'Domicilios', 'Pet Friendly'];
 const announcementLabel = announcement.join(', ');
+// Categorías del desplegable: las mismas de /menu (se omiten las que no tienen productos disponibles).
+const disponibles = await getCollection('productos', ({ data }) => data.disponible);
+const menuCategorias = categorias.filter((c) => disponibles.some((p) => p.data.categorias.includes(c.id)));
+
 const menu = [
   { id: 'panaderia', label: 'Panadería', icon: 'bread' },
   { id: 'desayuno', label: 'Desayuno', icon: 'sunrise' },
@@ -21,11 +36,12 @@ const menu = [
   { id: 'tarde', label: 'Tarde', icon: 'coffee' },
 ];
 
+// focus: parte de la foto que se conserva al recortar (horizontal vertical).
 const bakery = [
-  { name: 'Pan de Chocolate', note: 'Un hojaldre elaborado con dedicación y horneado para conquistar desde el primer mordisco.', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-72' },
-  { name: 'Lasagna Casera', note: 'Descripción', bg: 'bg-crust text-paper', span: 'h-72' },
-  { name: 'Cheesecakes', note: 'Descripción', bg: 'bg-paper text-ink', span: 'h-56' },
-  { name: 'Tamal Tolimense', note: 'Un clásico de nuestra cocina Colombiana, preparado con ese cuidad y sazón que nos caracteriza', bg: 'bg-wheat text-ink', span: 'md:col-span-2 h-56', image: favoritesImage },
+  { name: 'Pan de Chocolate', note: 'Hojaldre perfecto, textura delicadamente crujiente y nuestro chocolate que se descubre en cada mordisco.', image: panChocolate, alt: 'Pan de chocolate entero y otro partido que deja ver el relleno, sobre una tabla de madera', focus: '50% 40%' },
+  { name: 'Lasagna Casera', note: 'Preparada con dedicación y espíritu casero.', image: lasagna, alt: 'Lasagna gratinada con albahaca fresca en una fuente blanca', focus: '50% 40%' },
+  { name: 'Pan Granja', note: 'Una hogaza para quienes disfrutan el pan en su versión más artesanal.', image: panGranja, alt: 'Hogazas de pan granja sobre una tabla de madera, junto a un frasco de miel', focus: '50% 50%' },
+  { name: 'Cheesecakes', note: 'Hecho para ser recordado.', image: cheesecake, alt: 'Porción de cheesecake de arándanos junto a una taza de café', focus: '50% 45%' },
 ];
 
 const celebrationFeatures = [
@@ -47,6 +63,10 @@ const icons = {
   menu: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
   delivery: '<circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/>',
   clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  drink: '<path d="M5 3h14l-1.5 17a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1L5 3Zm.5 5h13"/>',
+  dessert: '<path d="M4 10h16l-2 10H6L4 10Zm-1 0a9 9 0 0 1 18 0M12 2v2m-5 0 1 2m9-2-1 2"/>',
+  heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  cake: '<path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20M7 8v3m5-3v3m5-3v3M7 4h.01M12 4h.01M17 4h.01"/>',
   pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
 };
 
@@ -60,10 +80,9 @@ const sede = {
     { days: 'Viernes y Sábado', time: '7:00 a.m. a 8:00 p.m.' }, 
     { days: 'Domingos y Festivos', time: '7:00 a.m. a 7:00 p.m.' }       
   ],
-  coords: '4.880111, -74.037445',         // Coordenadas google Maps
+  coords: contacto.coords,
   whatsapp: contacto.whatsapp,  
 };
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${sede.coords}`;
 
 const quick = [
   { label: 'Ver menú', href: '/menu', icon: 'menu' },
@@ -105,8 +124,17 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
           id="primary-menu" 
           class="absolute left-0 top-[calc(100%+0.75rem)] z-40 hidden min-w-52 flex-col gap-1 rounded-lg border border-ink/10 bg-paper p-2 text-ink shadow-lg"
         >
-          <li><a href="/menu" class="block rounded px-4 py-3 hover:bg-ink/10">Menú</a></li>
-          <li><a href="#panaderia" class="block rounded px-4 py-3 hover:bg-ink/10">Panadería</a></li>
+          {menuCategorias.map((c) => (
+            <li>
+              <a href={`/menu#${c.id}`} class="flex items-center gap-3 rounded px-3 py-2 font-medium hover:bg-ink/10">
+                <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-current">
+                  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[c.icon]} />
+                </span>
+                {c.label}
+              </a>
+            </li>
+          ))}
+          <li class="mt-1 border-t border-ink/15 pt-1"><a href="/menu" class="block rounded px-3 py-3 font-medium hover:bg-ink/10">Ver todo el menú</a></li>
         </ul>
       </div>
       <!-- image logo -->
@@ -166,9 +194,9 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
     </div>
 
     <div class="grid h-80 grid-cols-2 grid-rows-2 gap-3 md:h-[30rem] md:gap-4">
-      <Image src={heroMain} alt="Pan de masa madre recién salido del horno" loading="eager" class="row-span-2 h-full w-full rounded-2xl object-cover" />
-      <Image src={heroTop} alt="Croissant de mantequilla" class="h-full w-full rounded-2xl object-cover" />
-      <Image src={heroBottom} alt="Café filtrado" class="h-full w-full rounded-2xl object-cover" />
+      <Image src={heroVertical} alt="Pan de masa madre recién salido del horno" loading="eager" class="row-span-2 h-full w-full rounded-2xl object-cover" />
+      <Image src={heroTopLeft} alt="Croissant de mantequilla" class="h-full w-full rounded-2xl object-cover" />
+      <Image src={heroBottomLeft} alt="Café filtrado" class="h-full w-full rounded-2xl object-cover" />
     </div>
   </div>
 </section>
@@ -210,29 +238,52 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
       </div>
     </section>
 
-    <section id="panaderia" class="bg-ink py-10 text-paper md:py-16">
+    <!-- Divisor: antojos / favoritos -->
+    <div class="bg-paper md:pt-6" role="separator" aria-hidden="true">
+      <div class="mx-auto flex max-w-6xl items-center gap-4 px-6">
+        <span class="h-px flex-1 bg-ink/20"></span>
+        <svg class="size-6 shrink-0 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons.heart} />
+        <span class="h-px flex-1 bg-ink/20"></span>
+      </div>
+    </div>
+
+    <section id="panaderia" class="bg-paper py-10 md:py-12">
       <div class="mx-auto max-w-6xl px-6">
         <h2 class="font-display max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">Favoritos de Bukë</h2>
-        <p class="mt-4 max-w-2xl text-base leading-relaxed text-paper/80 md:text-lg">
-          Una seleccion de nuestros imprescindibles,
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink/80 md:text-lg">
+          Una selección de nuestros imprescindibles,
           hechos para disfrutar una y otra vez
         </p>
-        <div class="mt-12 grid gap-4 md:grid-cols-3">
+        <ul class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {bakery.map((b) => (
-            <div class={`relative flex items-end overflow-hidden rounded-2xl p-4 ${b.bg} ${b.span}`}>
-              {b.image && (
-                <Image src={b.image} alt={b.name} class="absolute inset-0 h-full w-full object-cover object-[45%_85%]" />
-                <div class="absolute inset-0 bg-linear-to-t from-paper from-0% via-paper/70 via-15% to-transparent to-45%" aria-hidden="true"></div>
-              )}
-              <div class="relative z-10">
-                <h3 class="font-display text-2xl font-semibold">{b.name}</h3>
-                <p class="text-xs opacity-70 md:text-sm">{b.note}</p>
+            <li class="relative aspect-[4/5] overflow-hidden rounded-2xl border-[0px] border-ink shadow-[0_1px_3px_rgb(104_67_42/0.2),0_6px_18px_rgb(104_67_42/0.12)] lg:aspect-[2/3]">
+              <Image
+                src={b.image}
+                alt={b.alt}
+                widths={[400, 800, 1200]}
+                sizes="(min-width: 1024px) 17rem, (min-width: 640px) 50vw, 100vw"
+                class="absolute inset-0 h-full w-full object-cover"
+                style={`object-position:${b.focus}`}
+              />
+              <div class="absolute inset-0 bg-linear-to-b from-[#1f120a]/85 from-0% via-[#1f120a]/60 via-25% to-transparent to-50%" aria-hidden="true"></div>
+              <div class="relative z-10 p-4 text-paper">
+                <h3 class="font-display text-2xl leading-tight font-semibold lg:text-xl xl:text-2xl">{b.name}</h3>
+                <p class="mt-1.5 text-sm leading-snug text-paper/90">{b.note}</p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
+
+    <!-- Divisor: favoritos / celebraciones -->
+    <div class="bg-paper" role="separator" aria-hidden="true">
+      <div class="mx-auto flex max-w-6xl items-center gap-4 px-6">
+        <span class="h-px flex-1 bg-ink/20"></span>
+        <svg class="size-6 shrink-0 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons.cake} />
+        <span class="h-px flex-1 bg-ink/20"></span>
+      </div>
+    </div>
 
     <!-- Celebraciones -->
     <section id="celebraciones" class="bg-paper py-14 md:py-12">
@@ -243,7 +294,7 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
             Celebra tus mejores momentos en Bukë
           </h2>
           <p class="mt-5 max-w-sm text-lg leading-relaxed text-ink/80">
-            ¿Una reunion de equipo, un cumpleaños o un encuentro con amigos? En Buke encontraras un ambiente acogedor, propuestas artesanales y atencion personalizada para disfrutar de cada ocasion. 
+            ¿Una reunión de equipo, un cumpleaños o un encuentro con amigos? En Bukë encontrarás un ambiente acogedor, propuestas artesanales y atención personalizada para disfrutar de cada ocasión. 
           </p>
 
           <a href="#ubicacion" class="mt-7 inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-ink px-7 font-medium text-paper transition-colors hover:bg-ink/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
@@ -269,15 +320,15 @@ const btn = 'inline-flex items-center rounded-full px-6 py-3 font-medium';
 
         <div class="grid aspect-[1/1.05] grid-cols-2 grid-rows-[1.1fr_1fr] gap-3 sm:gap-4 md:aspect-auto md:h-[34rem]">
           <figure class="relative col-span-2 overflow-hidden rounded-2xl">
-            <Image src={heroBottom} alt="Variedad de panadería artesanal recién horneada" class="h-full w-full object-cover" />
+            <Image src={momentTop} alt="Variedad de panadería artesanal recién horneada" class="h-full w-full -translate-x--15 scale-100 object-cover" />
             
           </figure>
           <figure class="relative overflow-hidden rounded-2xl">
-            <Image src={heroMain} alt="Pan de banano preparado para compartir" class="h-full w-full object-cover" />
+            <Image src={momentLeft} alt="Pan de banano preparado para compartir" class="h-full w-full object-cover" />
             
           </figure>
           <figure class="relative overflow-hidden rounded-2xl">
-            <Image src={heroTop} alt="Rollos de canela para acompañar una reunión" class="h-full w-full object-cover" />
+            <Image src={momentBottom} alt="Rollos de canela para acompañar una reunión" class="h-full w-full object-cover" />
             
           </figure>
         </div>

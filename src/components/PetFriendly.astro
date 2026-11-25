@@ -1,11 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import { petFriendlyContent as content, petFriendlyImages as images } from '../data/petfriendly';
 
 interface Props {
   autoplayMs?: number;
+  /** Marco de foto impresa en las tarjetas. Con false se ve la versión sin marco. */
+  marco?: boolean;
 }
 
-const { autoplayMs = 3000 } = Astro.props;
+const { autoplayMs = 3000, marco = true } = Astro.props;
 
 const icons: Record<string, string> = {
   paw: '<circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>',
@@ -22,7 +25,7 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
   <span class="h-px flex-1 bg-ink/20"></span>
 </div>
 
-<section id="mascotas" class="overflow-x-clip bg-paper py-14 md:py-12">
+<section id="mascotas" class="scroll-mt-28 overflow-x-clip bg-paper py-14 md:py-12">
   <div class="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-[1fr_1fr] md:gap-12">
     <div>
       <h2 class="font-display max-w-xl text-4xl leading-tight font-semibold tracking-tight md:text-5xl">
@@ -30,9 +33,9 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
       </h2>
       <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink/80">{content.paragraph}</p>
 
-      <ul class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-5 border-t border-ink/20 pt-6">
+      <ul class="mt-8 grid grid-cols-3 gap-x-4 border-t border-ink/20 pt-6">
         {content.features.map((feature) => (
-          <li class="flex flex-col items-center gap-2 text-center text-xs font-medium leading-snug sm:text-sm w-24">
+          <li class="flex flex-col items-start gap-2 text-xs font-medium leading-snug sm:text-sm">
             <svg class="size-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[feature.icon]} />
             <span>{feature.label}</span>
           </li>
@@ -41,7 +44,7 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
     </div>
 
     <div
-      class="card-stack mx-auto w-full max-w-md md:order-first"
+      class:list={["card-stack mx-auto w-full max-w-lg md:order-first", { "sin-marco": !marco }]}
       data-card-stack
       data-index="0"
       data-interval={autoplayMs}
@@ -60,18 +63,21 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
             aria-hidden={i === 0 ? 'false' : 'true'}
             style={`--d:${i};--k:${sign(i)}`}
           >
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
-              width={image.width}
-              height={image.height}
+              widths={[400, 800]}
+              sizes="(min-width: 768px) 32rem, 90vw"
               loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"
               draggable="false"
-              class="size-full object-cover"
+              class="stack-img size-full object-cover"
+              style={`--focus:${image.focus ?? '50% 50%'};--zoom:${image.zoom ?? 1};--tone:${image.filter ?? 'none'}`}
             />
           </div>
         ))}
+      </div>
+    </div>
   </div>
 </section>
 
@@ -87,11 +93,12 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
     --stack-easing: cubic-bezier(0.65, 0, 0.35, 1);
     --stack-out-angle: -4.5deg;
     --stack-out-x: -75%;
-    --stack-shift: 4%;
+    --stack-shift: 2.8%;
     --stack-lift: -1.5%;
-    --stack-angle: 1.5deg;
+    --stack-angle: 1deg;
     --stack-shrink: 0.04;
-    --stack-accent: var(--color-clay);
+    --stack-border: 14px;
+    --stack-paper: #fffaf0;
     border-radius: 0.5rem;
     margin-left: 1rem;
   }
@@ -119,15 +126,46 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border: 1px solid var(--stack-accent);
-    border-radius: 8px;
+    /* Marco de foto impresa: el borde recorta la foto por dentro, incluso con zoom. */
+    border: var(--stack-border) solid var(--stack-paper);
+    border-radius: 1rem;
     background: var(--color-wheat);
+    box-shadow: 0 1px 3px rgb(104 67 42 / 0.2), 0 6px 18px rgb(104 67 42 / 0.12);
     opacity: 1;
     z-index: calc(var(--n) - var(--d));
     transform: var(--pose);
     transform-origin: center;
     transition: transform var(--stack-duration) var(--stack-easing);
     user-select: none;
+  }
+
+  /* Encuadre y tono de cada foto; los valores vienen de data/petfriendly.ts. */
+  .stack-img {
+    object-position: var(--focus);
+    transform: scale(var(--zoom));
+    transform-origin: var(--focus);
+    filter: var(--tone);
+  }
+
+  /* TEMPORAL: versión sin marco (marco={false}). Se puede borrar este bloque cuando el marco sea definitivo. */
+  .card-stack.sin-marco {
+    --stack-border: 1px;
+    --stack-paper: var(--color-clay);
+    --stack-shift: 4%;
+    --stack-angle: 1.5deg;
+  }
+  .sin-marco .stack-card {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+  .sin-marco .stack-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-wheat);
+    opacity: calc(min(var(--d), 1) * 0.6);
+    transition: opacity var(--stack-duration) var(--stack-easing);
+    pointer-events: none;
   }
 
   .is-animating .stack-card {
