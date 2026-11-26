@@ -37,7 +37,8 @@ const sign = (depth: number) => (depth === 0 ? 0 : depth % 2 ? 1 : -1);
         {content.features.map((feature) => (
           <li class="flex flex-col items-start gap-2 text-xs font-medium leading-snug sm:text-sm">
             <svg class="size-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[feature.icon]} />
-            <span>{feature.label}</span>
+            <!-- Con \n en la etiqueta, cada parte queda en una línea en móvil (nowrap evita que se parta en tres). -->
+            <span>{feature.label.split('\n').map((part, i, parts) => <>{i > 0 && <br class="sm:hidden" />}<span class:list={{ 'whitespace-nowrap': parts.length > 1 }}>{part}</span>{' '}</>)}</span>
           </li>
         ))}
       </ul>
