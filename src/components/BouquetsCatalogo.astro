@@ -110,8 +110,11 @@ const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
                 <!-- IMPORTANTE: ningún ancestro del <img> (a, div, li, ul, panel, section) puede crear contexto de
                      apilamiento (opacity<1, translate/scale/transform, filter, will-change, isolation, z-index),
                      o mix-blend-multiply deja de fundir el blanco con el fondo. Las animaciones van en el propio
-                     <img>, el nombre y el precio (ver <style> al final). -->
-                <div class="mx-auto flex aspect-[4/5] w-full max-w-[13rem] items-center justify-center">
+                     <img>, el nombre y el precio (ver <style> al final).
+                     iOS Safari: el carrusel (overflow-x:auto) se compone en su propia capa y aísla el blend, así que
+                     el multiply no "ve" el fondo de la sección y el blanco queda visible. Por eso el contenedor del
+                     <img> lleva su propio bg-paper: el img se funde con ese fondo, que siempre está dentro del grupo. -->
+                <div class="mx-auto flex aspect-[4/5] w-full max-w-[13rem] items-center justify-center bg-paper">
                   <Image src={p.imagen} alt={p.alt} width={720} height={900} loading="lazy" class="cat-img size-full object-contain mix-blend-multiply sm:group-hover:scale-[1.03]" />
                 </div>
                 <span class="mt-6 block">
