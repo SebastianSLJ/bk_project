@@ -79,7 +79,8 @@ const generalLink = whatsappUrl('Hola, quiero pedir un bouquet.');
     <h2 id="catalogo-title" class="font-display text-balance text-3xl font-semibold tracking-tight text-ink md:text-5xl">
       Descubre Nuestros Ramos
     </h2>
-    <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink/80 md:text-lg">
+    <!-- En móvil el tamaño escala con el ancho para que "Para regalar… sorprender." quepa en una sola línea (~24em). -->
+    <p class="mx-auto mt-4 max-w-xl text-[clamp(0.75rem,calc((100vw-3rem)/24),1rem)] leading-relaxed text-ink/80 md:text-lg">
      Para regalar, compartir o simplemente sorprender. <br/> -Puedes recoger en Bukë o recibir en casa-
     </p>
 

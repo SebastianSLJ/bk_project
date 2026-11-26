@@ -32,8 +32,8 @@ export const petFriendlyContent = {
   paragraph:
     'En Bukë tu mejor amigo también es bienvenido. Disfruten juntos de un desayuno, un café o una tarde tranquila. Además, tenemos snacks especiales para consentirlo.',
   features: [
-    { label: 'Snacks especiales', icon: 'paw' },
-    { label: 'Espacio al aire libre', icon: 'terrace' },
+    { label: 'Snacks\nespeciales', icon: 'paw' }, // \n = salto de línea solo en móvil
+    { label: 'Espacio al aire\nlibre', icon: 'terrace' },
     { label: 'Agua para tu mascota', icon: 'drop' }, 
   ],
 };
